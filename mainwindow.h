@@ -30,6 +30,8 @@ private slots:
 
     void on_btn_add_student_clicked();
 
+    void on_pushButton_5_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

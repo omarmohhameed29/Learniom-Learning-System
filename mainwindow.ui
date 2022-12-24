@@ -266,7 +266,7 @@ QDateEdit::down-arrow
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="P0_Login">
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -2317,7 +2317,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_4">
+               <widget class="QLineEdit" name="ln_edt_stnt_nme">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -2388,7 +2388,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_7">
+               <widget class="QLineEdit" name="ln_edt_stnt_dprtmnt">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -2459,7 +2459,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_5">
+               <widget class="QLineEdit" name="ln_edt_stnt_mail">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -2530,7 +2530,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_6">
+               <widget class="QLineEdit" name="ln_edt_stnt_phn">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -2601,7 +2601,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QComboBox" name="comboBox_3">
+               <widget class="QComboBox" name="cmb_grd_yr">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>

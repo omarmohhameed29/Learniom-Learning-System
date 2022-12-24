@@ -7,21 +7,22 @@
 
 class Course;
 
+
 class Student : public User {
+
 private:
+    int ID;
     int graduation_year;
     std::vector<Course*> courses;
 
 public:
     Student(
         std::string name,
-        std::string code,
         std::string email,
         std::string phone,
         std::string department,
         int age,
-        int graduation_year,
-        std::vector<Course*> courses);
+        int graduation_year);
 };
 
 #endif // STUDENT_H
