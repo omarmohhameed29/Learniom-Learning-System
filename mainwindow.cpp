@@ -156,3 +156,8 @@ void MainWindow::on_btn_add_student_form_clicked() {
     ui->ln_edt_stnt_mail->setText("");
 }
 
+// Professors
+void MainWindow::on_btn_nav_professors_clicked() {
+    ui->ViewStack->setCurrentIndex(push_navigation(4));
+}
+
