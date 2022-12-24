@@ -55,38 +55,13 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-
-void MainWindow::on_pushButton_clicked() {
-    ui->btn_back->setVisible(true);
-    ui->ViewStack->setCurrentIndex(push_navigation(1));
-    ui->btn_logout_1->setVisible(true);
-
-}
-
-
-void MainWindow::on_pushButton_2_clicked() {
-//    ui->listWidget->addItem("test");
-}
-
+// App Bar
 void MainWindow::on_btn_logout_1_clicked() {
     clear_navigation();
     ui->ViewStack->setCurrentIndex(0);
     ui->btn_back->setVisible(false);
     ui->btn_logout_1->setVisible(false);
 }
-
-void MainWindow::on_btn_logout_2_clicked() {
-    clear_navigation();
-    ui->ViewStack->setCurrentIndex(0);
-    ui->btn_back->setVisible(false);
-    ui->btn_logout_1->setVisible(false);
-}
-
-
-void MainWindow::on_btn_nav_students_clicked() {
-    ui->ViewStack->setCurrentIndex(push_navigation(2));
-}
-
 
 void MainWindow::on_btn_back_clicked() {
     // Correctly hiding the app bar buttons on the login page on going back
@@ -102,13 +77,33 @@ void MainWindow::on_btn_back_clicked() {
     }
 }
 
+// P0_Login
+void MainWindow::on_btn_login_clicked() {
+    ui->btn_back->setVisible(true);
+    ui->ViewStack->setCurrentIndex(push_navigation(1));
+    ui->btn_logout_1->setVisible(true);
+}
 
+void MainWindow::on_btn_logout_2_clicked() {
+    clear_navigation();
+    ui->ViewStack->setCurrentIndex(0);
+    ui->btn_back->setVisible(false);
+    ui->btn_logout_1->setVisible(false);
+}
+
+
+// P1_Dashboard
+void MainWindow::on_btn_nav_students_clicked() {
+    ui->ViewStack->setCurrentIndex(push_navigation(2));
+}
+
+// P2_Students
 void MainWindow::on_btn_add_student_clicked() {
     ui->ViewStack->setCurrentIndex(push_navigation(3));
 }
 
-
-void MainWindow::on_pushButton_5_clicked() {
+// P3_Add_Student
+void MainWindow::on_btn_add_student_form_clicked() {
     validate valid;
 
     // Variabls that carries the data pulled from the line edits

@@ -266,7 +266,7 @@ QDateEdit::down-arrow
 }</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="P0_Login">
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -711,7 +711,7 @@ color: rgba(0, 0, 0, 0.50);</string>
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="btn_login">
             <property name="minimumSize">
              <size>
               <width>90</width>
@@ -1756,7 +1756,7 @@ color: rgba(0, 0, 0, 0.50);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_2">
+                  <widget class="QPushButton" name="btn_visit_profile">
                    <property name="minimumSize">
                     <size>
                      <width>94</width>
@@ -3287,7 +3287,7 @@ color: rgba(0, 0, 0, 0.87);</string>
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_5">
+           <widget class="QPushButton" name="btn_add_student_form">
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
               <horstretch>0</horstretch>

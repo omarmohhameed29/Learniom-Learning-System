@@ -16,21 +16,20 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_btn_logout_2_clicked();
 
     void on_btn_logout_1_clicked();
 
-    void on_btn_nav_students_clicked();
-
     void on_btn_back_clicked();
+
+    void on_btn_login_clicked();
+
+    void on_btn_logout_2_clicked();
+
+    void on_btn_nav_students_clicked();
 
     void on_btn_add_student_clicked();
 
-    void on_pushButton_5_clicked();
+    void on_btn_add_student_form_clicked();
 
 private:
     Ui::MainWindow *ui;
