@@ -4,7 +4,6 @@
 #include <stack>
 #include "validate.h"
 #include "student.h"
-#include <bits/stdc++.h>
 #include <cmath>
 #include "database.h"
 std::stack<int> page_track;
@@ -39,6 +38,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->ViewStack->setCurrentIndex(push_navigation(0));
     ui->btn_logout_1->setVisible(false);
     ui->btn_back->setVisible(false);
+    QHeaderView* header = ui->tableWidget->horizontalHeader();
+    header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
 }
 
 MainWindow::~MainWindow()
@@ -149,8 +150,10 @@ void MainWindow::on_pushButton_5_clicked()
     }
     else
     {
-        //TODO display wrong input message
+        qDebug()<< "Errorrrr";
     }
+
+        qDebug() << "REACHED";
 
     ui->ln_edt_stnt_nme->setText("");
     ui->ln_edt_stnt_dprtmnt->setText("");

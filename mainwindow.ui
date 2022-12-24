@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1187</width>
-    <height>649</height>
+    <height>740</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -266,7 +266,7 @@ QDateEdit::down-arrow
 }</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="P0_Login">
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -1807,29 +1807,31 @@ min-width: 90px;</string>
        </layout>
       </widget>
       <widget class="QWidget" name="P2_Students">
-       <layout class="QHBoxLayout" name="horizontalLayout_17">
+       <layout class="QVBoxLayout" name="verticalLayout_34">
         <item>
-         <spacer name="horizontalSpacer_8">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Preferred</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>100</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_19">
+         <layout class="QHBoxLayout" name="horizontalLayout_21">
           <item>
-           <widget class="QLabel" name="label_27">
-            <property name="styleSheet">
-             <string notr="true">font-style: normal;
+           <spacer name="horizontalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Preferred</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_33">
+            <item>
+             <widget class="QLabel" name="label_27">
+              <property name="styleSheet">
+               <string notr="true">font-style: normal;
 font-weight: 400;
 font-size: 24px;
 line-height: 24px;
@@ -1840,40 +1842,40 @@ letter-spacing: 0.18px;
 /* 00. On Surface / High Emphasis */
 
 color: rgba(0, 0, 0, 0.87);</string>
-            </property>
-            <property name="text">
-             <string>Manage Students</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_19">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>10</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_12">
+              </property>
+              <property name="text">
+               <string>Manage Students</string>
+              </property>
+             </widget>
+            </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_3">
-              <property name="minimumSize">
+             <spacer name="verticalSpacer_19">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
                <size>
-                <width>500</width>
-                <height>0</height>
+                <width>20</width>
+                <height>13</height>
                </size>
               </property>
-              <property name="styleSheet">
-               <string notr="true">color: #000;
+             </spacer>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_12">
+              <item>
+               <widget class="QLineEdit" name="lineEdit_3">
+                <property name="minimumSize">
+                 <size>
+                  <width>500</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: #000;
 padding: 6px 12px;
 border: 1px solid rgba(0, 0, 0, 0.20);
 border-radius: 5px;
@@ -1892,74 +1894,74 @@ letter-spacing: 0.25px;
 /* 00. On Surface / High Emphasis */
 
 color: rgba(0, 0, 0, 0.50);</string>
-              </property>
-              <property name="placeholderText">
-               <string>Search for a student by name</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_3">
-              <property name="minimumSize">
-               <size>
-                <width>92</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background: #fff;
+                </property>
+                <property name="placeholderText">
+                 <string>Search for a student by name</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_3">
+                <property name="minimumSize">
+                 <size>
+                  <width>92</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background: #fff;
 color: #0E409A;
 border: 1px solid;
 border-color:  #0E409A;
 border-radius: 4px;
 min-width: 90px;</string>
-              </property>
-              <property name="text">
-               <string>Search</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="btn_add_student">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>90</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>150</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: #fff;
+                </property>
+                <property name="text">
+                 <string>Search</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_add_student">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>1</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>90</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>150</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color: #fff;
 background: #0E409A;
 border-radius: 4px;
 min-width: 90px;</string>
-              </property>
-              <property name="text">
-               <string>Add New Student</string>
-              </property>
-             </widget>
+                </property>
+                <property name="text">
+                 <string>Add New Student</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_14">
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_15">
+             <layout class="QHBoxLayout" name="horizontalLayout_14">
               <item>
-               <widget class="QLabel" name="label_28">
-                <property name="styleSheet">
-                 <string notr="true">/* Body 2 */
+               <layout class="QHBoxLayout" name="horizontalLayout_15">
+                <item>
+                 <widget class="QLabel" name="label_28">
+                  <property name="styleSheet">
+                   <string notr="true">/* Body 2 */
 
 font-family: 'Roboto';
 font-style: normal;
@@ -1974,71 +1976,71 @@ text-align: center;
 /* 00. On Surface / High Emphasis */
 
 color: rgba(0, 0, 0, 0.87);</string>
-                </property>
-                <property name="text">
-                 <string>Year</string>
-                </property>
-                <property name="scaledContents">
-                 <bool>false</bool>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-               </widget>
+                  </property>
+                  <property name="text">
+                   <string>Year</string>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>false</bool>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox">
+                  <property name="minimumSize">
+                   <size>
+                    <width>140</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Pick Year</string>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>2025</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>2026</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
-               <widget class="QComboBox" name="comboBox">
-                <property name="minimumSize">
+               <spacer name="horizontalSpacer_12">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
                  <size>
-                  <width>140</width>
-                  <height>0</height>
+                  <width>40</width>
+                  <height>20</height>
                  </size>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="placeholderText">
-                 <string>Pick Year</string>
-                </property>
-                <item>
-                 <property name="text">
-                  <string>2025</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>2026</string>
-                 </property>
-                </item>
-               </widget>
+               </spacer>
               </item>
-             </layout>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_12">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Fixed</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_16">
               <item>
-               <widget class="QLabel" name="label_29">
-                <property name="styleSheet">
-                 <string notr="true">/* Body 2 */
+               <layout class="QHBoxLayout" name="horizontalLayout_16">
+                <item>
+                 <widget class="QLabel" name="label_29">
+                  <property name="styleSheet">
+                   <string notr="true">/* Body 2 */
 
 font-family: 'Roboto';
 font-style: normal;
@@ -2053,121 +2055,666 @@ text-align: center;
 /* 00. On Surface / High Emphasis */
 
 color: rgba(0, 0, 0, 0.87);</string>
-                </property>
-                <property name="text">
-                 <string>Department</string>
-                </property>
-                <property name="scaledContents">
-                 <bool>false</bool>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-               </widget>
+                  </property>
+                  <property name="text">
+                   <string>Department</string>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>false</bool>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>140</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Pick Department</string>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>SBME</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
-               <widget class="QComboBox" name="comboBox_2">
-                <property name="minimumSize">
+               <spacer name="horizontalSpacer_10">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
                  <size>
-                  <width>140</width>
-                  <height>0</height>
+                  <width>40</width>
+                  <height>20</height>
                  </size>
                 </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="placeholderText">
-                 <string>Pick Department</string>
-                </property>
-                <item>
-                 <property name="text">
-                  <string>SBME</string>
-                 </property>
-                </item>
-               </widget>
+               </spacer>
               </item>
              </layout>
             </item>
             <item>
-             <spacer name="horizontalSpacer_10">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QTableWidget" name="tableWidget">
-            <property name="styleSheet">
-             <string notr="true">color: black;
+             <layout class="QHBoxLayout" name="horizontalLayout_17">
+              <item>
+               <widget class="QTableWidget" name="tableWidget">
+                <property name="styleSheet">
+                 <string notr="true">color: black;
 border: 1px solid rgb(227, 227, 227);</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::VLine</enum>
+                </property>
+                <property name="showGrid">
+                 <bool>true</bool>
+                </property>
+                <property name="gridStyle">
+                 <enum>Qt::NoPen</enum>
+                </property>
+                <property name="sortingEnabled">
+                 <bool>false</bool>
+                </property>
+                <property name="cornerButtonEnabled">
+                 <bool>true</bool>
+                </property>
+                <column>
+                 <property name="text">
+                  <string>ID</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Email</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Name</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Department</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Year</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="card1_6" native="true">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>500</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #fff;
+border: 2px solid rgb(227, 227, 227);
+padding: 0;</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_19">
+                 <property name="leftMargin">
+                  <number>24</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>24</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>24</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>24</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_38">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Roboto</family>
+                     <pointsize>-1</pointsize>
+                     <italic>false</italic>
+                     <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 16px;
+/* identical to box height, or 160% */
+border: 0;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+
+/* 00. On Surface / High Emphasis */
+
+color: #0E409A;
+</string>
+                   </property>
+                   <property name="text">
+                    <string>STUDENT - 001</string>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>false</bool>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_39">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 24px;
+/* identical to box height, or 100% */
+
+letter-spacing: 0.18px;
+border: 0;
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.87);</string>
+                   </property>
+                   <property name="text">
+                    <string>Amir Hesham K.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_30">
+                   <item>
+                    <widget class="QLabel" name="label_42">
+                     <property name="styleSheet">
+                      <string notr="true">/* Body 2 */
+border: 0;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 300;
+font-size: 10px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+text-align: center;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.87);</string>
+                     </property>
+                     <property name="text">
+                      <string>Name</string>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>false</bool>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="ln_edt_stnt_nme_2">
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: #000;
+padding: 6px 12px;
+border: 1px solid rgba(0, 0, 0, 0.20);
+border-radius: 5px;
+
+/* Body 2 */
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.50);</string>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Enter your name</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_27">
+                   <item>
+                    <widget class="QLabel" name="label_37">
+                     <property name="styleSheet">
+                      <string notr="true">/* Body 2 */
+border: 0;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 300;
+font-size: 10px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+text-align: center;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.87);</string>
+                     </property>
+                     <property name="text">
+                      <string>Department</string>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>false</bool>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="ln_edt_stnt_dprtmnt_2">
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: #000;
+padding: 6px 12px;
+border: 1px solid rgba(0, 0, 0, 0.20);
+border-radius: 5px;
+
+/* Body 2 */
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.50);</string>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Enter your department</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_28">
+                   <item>
+                    <widget class="QLabel" name="label_40">
+                     <property name="styleSheet">
+                      <string notr="true">/* Body 2 */
+border: 0;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 300;
+font-size: 10px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+text-align: center;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.87);</string>
+                     </property>
+                     <property name="text">
+                      <string>Email</string>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>false</bool>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="ln_edt_stnt_mail_2">
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: #000;
+padding: 6px 12px;
+border: 1px solid rgba(0, 0, 0, 0.20);
+border-radius: 5px;
+
+/* Body 2 */
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.50);</string>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Enter your email</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_29">
+                   <item>
+                    <widget class="QLabel" name="label_41">
+                     <property name="styleSheet">
+                      <string notr="true">/* Body 2 */
+border: 0;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 300;
+font-size: 10px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+text-align: center;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.87);</string>
+                     </property>
+                     <property name="text">
+                      <string>Phone</string>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>false</bool>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLineEdit" name="ln_edt_stnt_phn_2">
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: #000;
+padding: 6px 12px;
+border: 1px solid rgba(0, 0, 0, 0.20);
+border-radius: 5px;
+
+/* Body 2 */
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.50);</string>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Enter your phone </string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_32">
+                   <item>
+                    <widget class="QLabel" name="label_44">
+                     <property name="styleSheet">
+                      <string notr="true">/* Body 2 */
+border: 0;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 300;
+font-size: 10px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+text-align: center;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.87);</string>
+                     </property>
+                     <property name="text">
+                      <string>Date of Birth</string>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>false</bool>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QDateEdit" name="dateEdit_2">
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string>padding: 6px 12px;</string>
+                     </property>
+                     <property name="frame">
+                      <bool>true</bool>
+                     </property>
+                     <property name="buttonSymbols">
+                      <enum>QAbstractSpinBox::NoButtons</enum>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_31">
+                   <item>
+                    <widget class="QLabel" name="label_43">
+                     <property name="styleSheet">
+                      <string notr="true">/* Body 2 */
+border: 0;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 300;
+font-size: 10px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+text-align: center;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.87);</string>
+                     </property>
+                     <property name="text">
+                      <string>Expected Graduation Year</string>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>false</bool>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="cmb_grd_yr_2">
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">padding: 6px 12px;</string>
+                     </property>
+                     <property name="placeholderText">
+                      <string>Pick Year</string>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>2023</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>2024</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>2025</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>2026</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
-            <property name="frameShape">
-             <enum>QFrame::VLine</enum>
+            <property name="sizeType">
+             <enum>QSizePolicy::Preferred</enum>
             </property>
-            <property name="showGrid">
-             <bool>true</bool>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
             </property>
-            <property name="gridStyle">
-             <enum>Qt::NoPen</enum>
-            </property>
-            <property name="sortingEnabled">
-             <bool>false</bool>
-            </property>
-            <property name="cornerButtonEnabled">
-             <bool>true</bool>
-            </property>
-            <column>
-             <property name="text">
-              <string>ID</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Email</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Name</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Department</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Year</string>
-             </property>
-            </column>
-           </widget>
+           </spacer>
           </item>
          </layout>
         </item>
         <item>
-         <spacer name="horizontalSpacer_9">
+         <spacer name="verticalSpacer_24">
           <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeType">
-           <enum>QSizePolicy::Preferred</enum>
+           <enum>QSizePolicy::Fixed</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>100</width>
-            <height>20</height>
+            <width>17</width>
+            <height>10</height>
            </size>
           </property>
          </spacer>
