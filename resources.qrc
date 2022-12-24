@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>book-reader.svg</file>
+        <file>user-md.svg</file>
+        <file>notebooks.svg</file>
+        <file>user.svg</file>
+        <file>user-circle 1.png</file>
+        <file>checkbox_down_arrow.svg</file>
+        <file>angle-left-b.svg</file>
+    </qresource>
+</RCC>
