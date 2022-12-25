@@ -26,6 +26,7 @@ public:
 
     int get_id();
     int getGraduation_year() const;
+
 };
 
 #endif // STUDENT_H

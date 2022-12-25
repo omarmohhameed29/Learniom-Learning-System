@@ -37,6 +37,10 @@ private slots:
 
     void on_tbl_students_cellClicked(int row, int column);
 
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

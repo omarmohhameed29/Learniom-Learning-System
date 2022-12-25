@@ -2209,7 +2209,7 @@ padding: 0;</string>
                 <number>24</number>
                </property>
                <item>
-                <widget class="QLabel" name="label_38">
+                <widget class="QLabel" name="stnt_code_lbl">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -2254,7 +2254,7 @@ color: #0E409A;
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_17">
                  <item>
-                  <widget class="QLabel" name="label_39">
+                  <widget class="QLabel" name="nm_lbl_stud">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -2623,7 +2623,7 @@ text-align: center;
 color: rgba(0, 0, 0, 0.87);</string>
                    </property>
                    <property name="text">
-                    <string>Date of Birth</string>
+                    <string>Date of birth</string>
                    </property>
                    <property name="scaledContents">
                     <bool>false</bool>
