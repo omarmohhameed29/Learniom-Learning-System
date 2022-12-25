@@ -29,12 +29,30 @@ void clear_navigation() {
 }
 
 Database* database;
+
+// TODO: move to student class
+std::map<std::string, QString> get_student_data_as_qstrings(Student* student) {
+    std::map<std::string, QString> result;
+
+    result["id"] = QString::fromStdString(std::to_string(student->get_id()));
+    result["name"] = QString::fromStdString(student->getName());
+    result["email"] = QString::fromStdString(student->getEmail());
+    result["department"] = QString::fromStdString(student->getDepartment());
+    result["year"]= QString::fromStdString(std::to_string(student->getGraduation_year()));
+
+    return result;
+}
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
 
     ui->setupUi(this);
 
     // Initialize the database mock
     database = new Database();
+
+    // Inject mock data
+    database->students = database->get_students_mock_data();
+
 
     // Remove layout margin to fix the app bar to the top
     ui->ContainerView->layout()->setContentsMargins(0, 0, 0, 0);
@@ -50,8 +68,44 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     QHeaderView* students_table_header = ui->tbl_students->horizontalHeader();
     students_table_header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
 
+//    ui->tbl_students->clear
+    int tbl_students_rows_count = database->students.size();
+    ui->tbl_students->setRowCount(tbl_students_rows_count);
+    ui->tbl_students->verticalHeader()->setVisible(false);
+    ui->tbl_students->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    for (auto row = 0; row < tbl_students_rows_count; row++) {
+        auto student_data = get_student_data_as_qstrings(database->students.at(row));
+
+        ui->tbl_students->setItem(row, 0, new QTableWidgetItem(student_data["id"]));
+        ui->tbl_students->setItem(row, 1, new QTableWidgetItem(student_data["name"]));
+        ui->tbl_students->setItem(row, 2, new QTableWidgetItem(student_data["email"]));
+        ui->tbl_students->setItem(row, 3, new QTableWidgetItem(student_data["department"]));
+        ui->tbl_students->setItem(row, 4, new QTableWidgetItem(student_data["year"]));
+    }
+
     QHeaderView* professors_table_header = ui->tbl_professors->horizontalHeader();
     professors_table_header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
+
+
+    Student *student = new Student("test name",
+                                  "asmiasas",
+                                  "01013708484",
+                                  "department.toStdString()",
+                                  20,
+                                  2025);
+
+    // Insert the user into the database
+    database->students.push_back(student);
+    // TODO: Remove later
+    auto student_data = get_student_data_as_qstrings(student);
+    ui->tbl_students->setRowCount(ui->tbl_students->rowCount() + 1);
+    ui->tbl_students->setItem(tbl_students_rows_count, 0, new QTableWidgetItem(student_data["id"]));
+    ui->tbl_students->setItem(ui->tbl_students->rowCount() -1 , 1, new QTableWidgetItem(student_data["name"]));
+    ui->tbl_students->setItem(ui->tbl_students->rowCount()- 1, 2, new QTableWidgetItem(student_data["email"]));
+    ui->tbl_students->setItem(ui->tbl_students->rowCount()-1, 3, new QTableWidgetItem(student_data["department"]));
+    ui->tbl_students->setItem(ui->tbl_students->rowCount()-1, 4, new QTableWidgetItem(student_data["year"]));
+
+    qDebug() << ui->tbl_students->rowCount();
 }
 
 MainWindow::~MainWindow() {
@@ -145,7 +199,16 @@ void MainWindow::on_btn_add_student_form_clicked() {
         // Insert the user into the database
         database->students.push_back(student);
         // TODO: Remove later
-        qDebug()<<database->students.size();
+        auto student_data = get_student_data_as_qstrings(student);
+        ui->tbl_students->setRowCount(ui->tbl_students->rowCount() + 1);
+        ui->tbl_students->setItem(ui->tbl_students->rowCount()-1, 0, new QTableWidgetItem(student_data["id"]));
+        ui->tbl_students->setItem(ui->tbl_students->rowCount()-1, 1, new QTableWidgetItem(student_data["name"]));
+        ui->tbl_students->setItem(ui->tbl_students->rowCount()-1, 2, new QTableWidgetItem(student_data["email"]));
+        ui->tbl_students->setItem(ui->tbl_students->rowCount()-1, 3, new QTableWidgetItem(student_data["department"]));
+        ui->tbl_students->setItem(ui->tbl_students->rowCount()-1, 4, new QTableWidgetItem(student_data["year"]));
+    qDebug()<< database->students.size();
+
+
     } else {
         // TODO: Remove later
         // TODO: Handle feedback to user
@@ -157,6 +220,7 @@ void MainWindow::on_btn_add_student_form_clicked() {
     ui->ln_edt_stnt_dprtmnt->setText("");
     ui->ln_edt_stnt_phn->setText("");
     ui->ln_edt_stnt_mail->setText("");
+
 }
 
 // Professors
@@ -167,5 +231,12 @@ void MainWindow::on_btn_nav_professors_clicked() {
 
 void MainWindow::on_btn_add_professor_clicked() {
     ui->ViewStack->setCurrentIndex(push_navigation(5));
+}
+
+
+
+void MainWindow::on_tbl_students_cellClicked(int row, int _)
+{
+    qDebug()<< row;
 }
 

@@ -1,5 +1,10 @@
 #include "student.h"
 static int code=0;
+int Student::getGraduation_year() const
+{
+    return graduation_year;
+}
+
 Student::Student(
         std::string name,
         std::string email,
@@ -13,3 +18,8 @@ Student::Student(
     this->courses = std::vector<Course*>();
     this->ID = ++code;
 };
+
+int Student::get_id()
+{
+    return this->ID;
+}

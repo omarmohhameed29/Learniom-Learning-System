@@ -23,6 +23,9 @@ public:
         std::string department,
         int age,
         int graduation_year);
+
+    int get_id();
+    int getGraduation_year() const;
 };
 
 #endif // STUDENT_H

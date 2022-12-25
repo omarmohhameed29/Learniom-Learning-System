@@ -35,6 +35,8 @@ private slots:
 
     void on_btn_add_professor_clicked();
 
+    void on_tbl_students_cellClicked(int row, int column);
+
 private:
     Ui::MainWindow *ui;
 };
