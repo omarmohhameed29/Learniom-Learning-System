@@ -46,9 +46,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->btn_logout_1->setVisible(false);
     ui->btn_back->setVisible(false);
 
-    // Stretching the table header
-    QHeaderView* header = ui->tableWidget->horizontalHeader();
-    header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
+    // Stretching tables header
+    QHeaderView* students_table_header = ui->tbl_students->horizontalHeader();
+    students_table_header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
+
+    QHeaderView* professors_table_header = ui->tbl_professors->horizontalHeader();
+    professors_table_header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
 }
 
 MainWindow::~MainWindow() {
@@ -159,5 +162,10 @@ void MainWindow::on_btn_add_student_form_clicked() {
 // Professors
 void MainWindow::on_btn_nav_professors_clicked() {
     ui->ViewStack->setCurrentIndex(push_navigation(4));
+}
+
+
+void MainWindow::on_btn_add_professor_clicked() {
+    ui->ViewStack->setCurrentIndex(push_navigation(5));
 }
 

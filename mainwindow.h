@@ -33,6 +33,8 @@ private slots:
 
     void on_btn_nav_professors_clicked();
 
+    void on_btn_add_professor_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
