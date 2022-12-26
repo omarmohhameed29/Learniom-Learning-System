@@ -43,9 +43,13 @@ std::map<std::string, QString> get_student_data_as_qstrings(Student* student) {
     return result;
 }
 
+
+// TODO: RENAME THOSE IMMED.
+
 //Global variable keeps track of current clicked row index in the QTableWidget
 //In order to control the delete button and the save button
 int row_index = NULL;
+
 
 //Helper Function that takes the current clicked row index in the QTableWidget
 //And passes its value to the global variable above
@@ -74,15 +78,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->btn_logout_1->setVisible(false);
     ui->btn_back->setVisible(false);
 
-    // Stretching tables header
+    // Setting up students table
     QHeaderView* students_table_header = ui->tbl_students->horizontalHeader();
     students_table_header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
 
-    //    ui->tbl_students->clear
     int tbl_students_rows_count = database->students.size();
     ui->tbl_students->setRowCount(tbl_students_rows_count);
     ui->tbl_students->verticalHeader()->setVisible(false);
     ui->tbl_students->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
     for (auto row = 0; row < tbl_students_rows_count; row++) {
         auto student_data = get_student_data_as_qstrings(database->students.at(row));
 
@@ -93,29 +97,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         ui->tbl_students->setItem(row, 4, new QTableWidgetItem(student_data["year"]));
     }
 
+    // Setting up professors table
     QHeaderView* professors_table_header = ui->tbl_professors->horizontalHeader();
     professors_table_header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
 
-
-    Student *student = new Student("test name",
-                                  "asmiasas",
-                                  "01013708484",
-                                  "department.toStdString()",
-                                  20,
-                                  2025);
-
-    // Insert the user into the database
-    database->students.push_back(student);
-    // TODO: Remove later
-    auto student_data = get_student_data_as_qstrings(student);
-    ui->tbl_students->setRowCount(ui->tbl_students->rowCount() + 1);
-    ui->tbl_students->setItem(tbl_students_rows_count, 0, new QTableWidgetItem(student_data["id"]));
-    ui->tbl_students->setItem(ui->tbl_students->rowCount() -1 , 1, new QTableWidgetItem(student_data["name"]));
-    ui->tbl_students->setItem(ui->tbl_students->rowCount()- 1, 2, new QTableWidgetItem(student_data["email"]));
-    ui->tbl_students->setItem(ui->tbl_students->rowCount()-1, 3, new QTableWidgetItem(student_data["department"]));
-    ui->tbl_students->setItem(ui->tbl_students->rowCount()-1, 4, new QTableWidgetItem(student_data["year"]));
-
-    qDebug() << ui->tbl_students->rowCount();
+    // Setting up admins table
+    QHeaderView* admins_table_header = ui->tbl_admins->horizontalHeader();
+    admins_table_header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
 }
 
 MainWindow::~MainWindow() {
@@ -162,6 +150,14 @@ void MainWindow::on_btn_logout_2_clicked() {
 // P1_Dashboard
 void MainWindow::on_btn_nav_students_clicked() {
     ui->ViewStack->setCurrentIndex(push_navigation(2));
+}
+
+void MainWindow::on_btn_nav_professors_clicked() {
+    ui->ViewStack->setCurrentIndex(push_navigation(4));
+}
+
+void MainWindow::on_btn_nav_admins_clicked() {
+    ui->ViewStack->setCurrentIndex(push_navigation(7));
 }
 
 // P2_Students
@@ -234,9 +230,7 @@ void MainWindow::on_btn_add_student_form_clicked() {
 }
 
 // Professors
-void MainWindow::on_btn_nav_professors_clicked() {
-    ui->ViewStack->setCurrentIndex(push_navigation(4));
-}
+
 
 
 void MainWindow::on_btn_add_professor_clicked() {
@@ -344,5 +338,11 @@ void MainWindow::on_pushButton_4_clicked()
     }
 
 
+}
+
+
+// Admins
+void MainWindow::on_btn_add_admin_clicked(){
+    ui->ViewStack->setCurrentIndex(push_navigation(8));
 }
 

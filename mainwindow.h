@@ -41,6 +41,10 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_btn_nav_admins_clicked();
+
+    void on_btn_add_admin_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
