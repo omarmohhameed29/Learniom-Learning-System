@@ -274,7 +274,7 @@ QDateEdit::down-arrow
 }</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>8</number>
       </property>
       <widget class="QWidget" name="P0_Login">
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -5134,7 +5134,7 @@ border-radius: 4px;
 min-width: 90px;</string>
             </property>
             <property name="text">
-             <string>Add Student</string>
+             <string>Add Professor</string>
             </property>
            </widget>
           </item>
@@ -7305,6 +7305,82 @@ min-width: 90px;</string>
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>btn_back</tabstop>
+  <tabstop>btn_logout_1</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>lineEdit_2</tabstop>
+  <tabstop>btn_login</tabstop>
+  <tabstop>btn_nav_students</tabstop>
+  <tabstop>pushButton_7</tabstop>
+  <tabstop>btn_nav_admins</tabstop>
+  <tabstop>btn_visit_profile</tabstop>
+  <tabstop>btn_logout_2</tabstop>
+  <tabstop>lineEdit_3</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>btn_add_student</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>comboBox_2</tabstop>
+  <tabstop>tbl_students</tabstop>
+  <tabstop>pushButton_5</tabstop>
+  <tabstop>ln_edt_stnt_nme_2</tabstop>
+  <tabstop>ln_edt_stnt_dprtmnt_2</tabstop>
+  <tabstop>ln_edt_stnt_mail_2</tabstop>
+  <tabstop>ln_edt_stnt_phn_2</tabstop>
+  <tabstop>dateEdit_2</tabstop>
+  <tabstop>cmb_grd_yr_2</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>ln_edt_stnt_nme</tabstop>
+  <tabstop>ln_edt_stnt_dprtmnt</tabstop>
+  <tabstop>ln_edt_stnt_mail</tabstop>
+  <tabstop>ln_edt_stnt_phn</tabstop>
+  <tabstop>cmb_grd_yr</tabstop>
+  <tabstop>dateEdit</tabstop>
+  <tabstop>btn_add_student_form</tabstop>
+  <tabstop>lineEdit_4</tabstop>
+  <tabstop>pushButton_9</tabstop>
+  <tabstop>btn_add_professor</tabstop>
+  <tabstop>comboBox_4</tabstop>
+  <tabstop>tbl_professors</tabstop>
+  <tabstop>pushButton_10</tabstop>
+  <tabstop>ln_edt_stnt_nme_3</tabstop>
+  <tabstop>ln_edt_stnt_dprtmnt_3</tabstop>
+  <tabstop>ln_edt_stnt_mail_3</tabstop>
+  <tabstop>ln_edt_stnt_phn_3</tabstop>
+  <tabstop>ln_edt_stnt_phn_6</tabstop>
+  <tabstop>ln_edt_stnt_phn_7</tabstop>
+  <tabstop>dateEdit_6</tabstop>
+  <tabstop>dateEdit_3</tabstop>
+  <tabstop>pushButton_11</tabstop>
+  <tabstop>ln_edt_stnt_nme_4</tabstop>
+  <tabstop>dateEdit_5</tabstop>
+  <tabstop>ln_edt_stnt_phn_4</tabstop>
+  <tabstop>ln_edt_stnt_mail_4</tabstop>
+  <tabstop>ln_edt_stnt_dprtmnt_4</tabstop>
+  <tabstop>dateEdit_4</tabstop>
+  <tabstop>ln_edt_stnt_mail_5</tabstop>
+  <tabstop>ln_edt_stnt_phn_5</tabstop>
+  <tabstop>btn_add_student_form_2</tabstop>
+  <tabstop>lineEdit_9</tabstop>
+  <tabstop>pushButton_19</tabstop>
+  <tabstop>btn_add_admin</tabstop>
+  <tabstop>tbl_admins</tabstop>
+  <tabstop>pushButton_20</tabstop>
+  <tabstop>ln_edt_admn_nme_2</tabstop>
+  <tabstop>ln_edt_admn_ttle_2</tabstop>
+  <tabstop>ln_edt_admn_mail_2</tabstop>
+  <tabstop>ln_edt_admn_phn_2</tabstop>
+  <tabstop>ln_edt_admn_bio_2</tabstop>
+  <tabstop>pushButton_21</tabstop>
+  <tabstop>btn_nav_professors</tabstop>
+  <tabstop>ln_edt_admn_nme</tabstop>
+  <tabstop>ln_edt_admn_ttle</tabstop>
+  <tabstop>ln_edt_admn_mail</tabstop>
+  <tabstop>ln_edt_admn_phn</tabstop>
+  <tabstop>ln_edt_admn_bio</tabstop>
+  <tabstop>ln_edt_admn_pass</tabstop>
+  <tabstop>btn_add_admin_form</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

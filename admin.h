@@ -32,6 +32,7 @@ public:
     std::string get_password() const;
     QDateTime get_creation_date();
     std::string get_biography() const;
+    int get_dateOfbirth() const;
 
 };
 

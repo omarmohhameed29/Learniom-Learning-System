@@ -51,4 +51,8 @@ Admin::Admin(
     }
 
 
+    int Admin::get_dateOfbirth() const
+    {
+        return 2023-getAge() ; //function to get date of birth
+    }
 

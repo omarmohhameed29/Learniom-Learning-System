@@ -53,6 +53,8 @@ private slots:
 
     void on_pushButton_21_clicked();
 
+    void on_btn_visit_profile_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

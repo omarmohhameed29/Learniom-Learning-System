@@ -31,6 +31,7 @@ void clear_navigation() {
 }
 
 Database* database;
+Admin* login_admin;
 
 // TODO: move to student class ::: Keep as it is
 std::map<std::string, QString> get_student_data_as_qstrings(Student* student) {
@@ -144,9 +145,17 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         ui->tbl_admins->setItem(row, 4, new QTableWidgetItem(admin_data["phone"]));
     }
 
+    Admin* main_admin = new Admin("Muhamed Mustafa", "IT", "Teaching Assistant", "MuhamedMostafa@gmail.com", "123456", "01013708540","Teaching Assistant at CUFE", 27 ,QDateTime::currentDateTime());
+    database->admins.push_back(main_admin);
 
-
-
+    auto admin_data = get_admin_data_as_qstrings(main_admin);
+    ui->tbl_admins->setRowCount(ui->tbl_admins->rowCount() + 1);
+    ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 0, new QTableWidgetItem(admin_data["id"]));
+    ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 1, new QTableWidgetItem(admin_data["name"]));
+    ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 2, new QTableWidgetItem(admin_data["title"]));
+    ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 3, new QTableWidgetItem(admin_data["email"]));
+    ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 4, new QTableWidgetItem(admin_data["phone"]));
+    qDebug()<< database->admins.size();
 
 
 
@@ -180,10 +189,35 @@ void MainWindow::on_btn_back_clicked() {
 
 // P0_Login
 void MainWindow::on_btn_login_clicked() {
+    Admin* admin;
     ui->btn_back->setVisible(true);
-    ui->ViewStack->setCurrentIndex(push_navigation(1));
     ui->btn_logout_1->setVisible(true);
+    std::string Enterd_Email = ui->lineEdit->text().toStdString();
+    std::string Entered_Password = ui->lineEdit_2->text().toStdString();
+    bool valid_login = false;
+    for(auto i : database->admins )
+    {
+        if(Enterd_Email == i ->getEmail() && Entered_Password == i ->get_password())
+        {
+            valid_login = true;
+            admin = i;
+            login_admin = i;
+            break;
+        }
+    }
+    if(valid_login)
+    {
+        ui->ViewStack->setCurrentIndex(push_navigation(1));
+        ui->label_23->setText(QString::fromStdString(admin->getName()));
+        ui->label_25->setText(QString::fromStdString(admin->get_biography()));
+    }
+    else
+    {
+        // TODO: Handle feedback to user
+        qDebug()<< "Errorrrr";
+    }
 }
+
 
 void MainWindow::on_btn_logout_2_clicked() {
     clear_navigation();
@@ -431,7 +465,6 @@ void MainWindow::on_btn_add_admin_form_clicked()
 
        auto admin_data = get_admin_data_as_qstrings(admin);
        ui->tbl_admins->setRowCount(ui->tbl_admins->rowCount() + 1);
-       //No ID is given ti the admin
        ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 0, new QTableWidgetItem(admin_data["id"]));
        ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 1, new QTableWidgetItem(admin_data["name"]));
        ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 2, new QTableWidgetItem(admin_data["title"]));
@@ -484,6 +517,10 @@ void MainWindow::on_pushButton_20_clicked()
 {
     //row index to be deleted
     int index_to_delete = row_index_admin;
+    if(database->admins[index_to_delete]!=login_admin)
+    {
+
+
     //Delete the admin from the database
     database->admins.erase(database->admins.begin() + index_to_delete);
     qDebug()<< index_to_delete;
@@ -513,9 +550,8 @@ void MainWindow::on_pushButton_20_clicked()
     ui->ln_edt_admn_mail_2->setText("Email");
     ui->ln_edt_admn_phn_2->setText("Phone Number");
     ui->ln_edt_admn_bio_2->setText("Admin Biography");
-
+    }
 }
-
 
 void MainWindow::on_pushButton_21_clicked()
 {
@@ -565,4 +601,21 @@ void MainWindow::on_pushButton_21_clicked()
 
 
 
+
+
+void MainWindow::on_btn_visit_profile_clicked()
+{
+    Admin* admin;
+    admin = login_admin;
+    ui->ViewStack->setCurrentIndex(push_navigation(6)); //Go to admin profile
+
+    ui->label_66->setText(QString::fromStdString(admin->getName()));
+    ui->label_70->setText(QString::fromStdString(admin->get_title()));
+    ui->label_71->setText(QString::fromStdString(admin->getPhone()));
+    ui->label_74->setText(QString::fromStdString(admin->getEmail()));
+    ui->label_75->setText(QString::number(admin->get_dateOfbirth()));
+    ui->label_82->setText(QDateTime(admin->get_creation_date()).toString("yyyy.MM.dd" ));
+    ui->label_77->setText(QString::fromStdString(admin->get_biography()));
+    ui->label_67->setText(QString::fromStdString(admin->get_speciality()));
+}
 
