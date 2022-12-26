@@ -48,13 +48,13 @@ std::map<std::string, QString> get_student_data_as_qstrings(Student* student) {
 
 //Global variable keeps track of current clicked row index in the QTableWidget
 //In order to control the delete button and the save button
-int row_index = NULL;
+int row_index_student = NULL;
 
 
 //Helper Function that takes the current clicked row index in the QTableWidget
 //And passes its value to the global variable above
 void store_row_index(int row){
-    row_index = row;
+    row_index_student = row;
 }
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -262,7 +262,7 @@ void MainWindow::on_tbl_students_cellClicked(int row, int _)
 void MainWindow::on_pushButton_5_clicked()
 {
     //row index to be deleted
-    int index_to_delete = row_index;
+    int index_to_delete = row_index_student;
     //Delete the student from the database
     database->students.erase(database->students.begin() + index_to_delete);
     qDebug()<< index_to_delete;
@@ -300,7 +300,7 @@ void MainWindow::on_pushButton_5_clicked()
 void MainWindow::on_pushButton_4_clicked()
 {
     //Row index of the student to be saved
-    int index_to_save = row_index;
+    int index_to_save = row_index_student;
     QString student_name = ui->ln_edt_stnt_nme_2->text();
     QString email = ui->ln_edt_stnt_mail_2->text();
     QString phone_number = ui->ln_edt_stnt_phn_2->text();
