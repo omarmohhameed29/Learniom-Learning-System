@@ -69,6 +69,18 @@ public:
         return(!is_empty(phone) && contain_letter(phone));
     }
 
+    bool title_validate(QString title){
+        return(!is_empty(title));
+    }
+
+    bool biography_validate(QString biography){
+        return(!is_empty(biography));
+    }
+
+    bool password_validate(QString password){
+        return(!is_empty(password));
+    }
+
 };
 
 

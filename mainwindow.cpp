@@ -7,6 +7,8 @@
 #include "validate.h"
 #include "student.h"
 #include "database.h"
+#include "admin.h"
+
 
 // Handle Navigation as Single Page Application (SPA)
 // Using a stack and a StackedWidget
@@ -43,18 +45,40 @@ std::map<std::string, QString> get_student_data_as_qstrings(Student* student) {
     return result;
 }
 
+std::map<std::string, QString> get_admin_data_as_qstrings(Admin* admin) {
+    std::map<std::string, QString> result;
+
+    result["id"] = QString::fromStdString(std::to_string(admin->get_id()));
+    result["name"] = QString::fromStdString(admin->getName());
+    result["email"] = QString::fromStdString(admin->getEmail());
+    result["speciality"] = QString::fromStdString(admin->get_speciality());
+    result["title"]= QString::fromStdString(admin->get_title());
+    result["phone"] = QString::fromStdString(admin->getPhone());
+    result["password"] = QString::fromStdString(admin->get_password());
+    result["biography"] = QString::fromStdString(admin->get_biography());
+
+    return result;
+}
+
+
+
 
 // TODO: RENAME THOSE IMMED.
 
 //Global variable keeps track of current clicked row index in the QTableWidget
 //In order to control the delete button and the save button
 int row_index_student = NULL;
+int row_index_admin = NULL;
 
 
 //Helper Function that takes the current clicked row index in the QTableWidget
 //And passes its value to the global variable above
 void store_row_index(int row){
     row_index_student = row;
+}
+
+void store_row_index_admin(int row){
+    row_index_admin = row;
 }
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -104,6 +128,28 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     // Setting up admins table
     QHeaderView* admins_table_header = ui->tbl_admins->horizontalHeader();
     admins_table_header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
+
+    int tbl_admins_rows_count = database->admins.size();
+    ui->tbl_admins->setRowCount(tbl_admins_rows_count);
+    ui->tbl_admins->verticalHeader()->setVisible(false);
+    ui->tbl_admins->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    for (auto row = 0; row < tbl_admins_rows_count; row++) {
+        auto admin_data = get_admin_data_as_qstrings(database->admins.at(row));
+
+        ui->tbl_admins->setItem(row, 0, new QTableWidgetItem(admin_data["id"]));
+        ui->tbl_admins->setItem(row, 1, new QTableWidgetItem(admin_data["name"]));
+        ui->tbl_admins->setItem(row, 2, new QTableWidgetItem(admin_data["title"]));
+        ui->tbl_admins->setItem(row, 3, new QTableWidgetItem(admin_data["email"]));
+        ui->tbl_admins->setItem(row, 4, new QTableWidgetItem(admin_data["phone"]));
+    }
+
+
+
+
+
+
+
 }
 
 MainWindow::~MainWindow() {
@@ -345,4 +391,178 @@ void MainWindow::on_pushButton_4_clicked()
 void MainWindow::on_btn_add_admin_clicked(){
     ui->ViewStack->setCurrentIndex(push_navigation(8));
 }
+
+
+void MainWindow::on_btn_add_admin_form_clicked()
+{
+    validate valid;
+
+    QString admin_name = ui->ln_edt_admn_nme->text();
+    QString admin_title = ui->ln_edt_admn_ttle->text();
+    QString admin_phone_number = ui->ln_edt_admn_phn->text();
+    QString admin_email = ui->ln_edt_admn_mail->text();
+    QString admin_biography = ui->ln_edt_admn_bio->text();
+    QString admin_password = ui->ln_edt_admn_pass->text();
+
+
+    bool name_is_valid, title_is_valid, phone_is_valid, email_is_valid, bio_is_valid, password_is_valid;
+
+    name_is_valid = valid.name_validate(admin_name);
+    title_is_valid = valid.title_validate(admin_title);
+    phone_is_valid = valid.phone_validate(admin_phone_number);
+    email_is_valid = valid.email_validate(admin_email);
+    bio_is_valid = valid.biography_validate(admin_biography);
+    password_is_valid = valid.password_validate(admin_password);
+
+    if (name_is_valid && title_is_valid && phone_is_valid && email_is_valid && bio_is_valid && password_is_valid) {
+        Admin *admin = new Admin(admin_name.toStdString(),
+                                 admin_title.toStdString(),
+                                 admin_title.toStdString(),
+                                 admin_email.toStdString(),
+                                 admin_password.toStdString(),
+                                 admin_phone_number.toStdString(),
+                                 admin_biography.toStdString(),
+                                 40,
+                                 QDateTime::currentDateTime());
+
+
+        // Insert the user into the database
+       database->admins.push_back(admin);
+
+       auto admin_data = get_admin_data_as_qstrings(admin);
+       ui->tbl_admins->setRowCount(ui->tbl_admins->rowCount() + 1);
+       //No ID is given ti the admin
+       ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 0, new QTableWidgetItem(admin_data["id"]));
+       ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 1, new QTableWidgetItem(admin_data["name"]));
+       ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 2, new QTableWidgetItem(admin_data["title"]));
+       ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 3, new QTableWidgetItem(admin_data["email"]));
+       ui->tbl_admins->setItem(ui->tbl_admins->rowCount()-1, 4, new QTableWidgetItem(admin_data["phone"]));
+       qDebug()<< database->admins.size();
+
+
+}
+else {
+    // TODO: Remove later
+    // TODO: Handle feedback to user
+    qDebug()<< "Error";
+}
+    ui->ln_edt_admn_nme->setText("");
+    ui->ln_edt_admn_ttle->setText("");
+    ui->ln_edt_admn_phn->setText("");
+    ui->ln_edt_admn_mail->setText("");
+    ui->ln_edt_admn_bio->setText("");
+    ui->ln_edt_admn_pass->setText("");
+}
+
+
+// Heshammmmmmmmm
+
+void MainWindow::on_tbl_admins_cellClicked(int row, int column)
+{
+
+        qDebug()<< row;
+        int admin_index = row;
+        store_row_index_admin(admin_index);
+        auto admin_data = get_admin_data_as_qstrings(database->admins[admin_index]);
+        ui->admn_code_lbl->setText("Admin - " + admin_data["id"]);
+        ui->ln_edt_admn_nme_2->setText(admin_data["name"]);
+        ui->ln_edt_admn_ttle_2->setText(admin_data["title"]);
+        ui->ln_edt_admn_mail_2->setText(admin_data["email"]);
+        ui->ln_edt_admn_phn_2->setText(admin_data["phone"]);
+        ui->ln_edt_admn_bio_2->setText(admin_data["biography"]);
+        //TODO either to redefine the filed dateEdit_2 in the ui to be age or year of graduation 3chan m3ndnash attribute fl student esmha date of birth
+        //Allahom bala8t
+        ui->nm_lbl_admn->setText(admin_data["name"]);
+    }
+
+
+
+
+
+
+void MainWindow::on_pushButton_20_clicked()
+{
+    //row index to be deleted
+    int index_to_delete = row_index_admin;
+    //Delete the admin from the database
+    database->admins.erase(database->admins.begin() + index_to_delete);
+    qDebug()<< index_to_delete;
+    qDebug()<< database->admins.size();
+    //Update the QTable Widget of the admins
+    //to display the admins after modifing the database
+    int tbl_admins_rows_count = database->admins.size();
+    ui->tbl_admins->setRowCount(tbl_admins_rows_count);
+    ui->tbl_admins->verticalHeader()->setVisible(false);
+    ui->tbl_admins->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    for (auto row = 0; row < tbl_admins_rows_count; row++)
+    {
+        auto admin_data = get_admin_data_as_qstrings(database->admins.at(row));
+
+        ui->tbl_admins->setItem(row, 0, new QTableWidgetItem(admin_data["id"]));
+        ui->tbl_admins->setItem(row, 1, new QTableWidgetItem(admin_data["name"]));
+        ui->tbl_admins->setItem(row, 2, new QTableWidgetItem(admin_data["title"]));
+        ui->tbl_admins->setItem(row, 3, new QTableWidgetItem(admin_data["email"]));
+        ui->tbl_admins->setItem(row, 4, new QTableWidgetItem(admin_data["phone"]));
+    }
+
+   // Reset the Fields to default values after deleting the current admin
+    ui->admn_code_lbl->setText("Admin - Code");
+    ui->nm_lbl_admn->setText("Admin name");
+    ui->ln_edt_admn_nme_2->setText("Admin");
+    ui->ln_edt_admn_ttle_2->setText("title");
+    ui->ln_edt_admn_mail_2->setText("Email");
+    ui->ln_edt_admn_phn_2->setText("Phone Number");
+    ui->ln_edt_admn_bio_2->setText("Admin Biography");
+
+}
+
+
+void MainWindow::on_pushButton_21_clicked()
+{
+    //Row index of the admin to be saved
+    int index_to_save = row_index_admin;
+
+    QString admin_name = ui->ln_edt_admn_nme_2->text();
+    QString admin_title = ui->ln_edt_admn_ttle_2->text();
+    QString admin_email = ui->ln_edt_admn_mail_2->text();
+    QString admin_phone_number = ui->ln_edt_admn_phn_2->text();
+    QString admin_biography = ui->ln_edt_admn_bio_2->text();
+
+    // creating new admin with the updated data
+    //replacing the old admin with the updated one
+    Admin *adminNew = new Admin(admin_name.toStdString(),
+                                admin_title.toStdString(),
+                                admin_title.toStdString(),
+                                admin_email.toStdString(),
+                                database->admins[row_index_admin]->get_password(),
+                                admin_phone_number.toStdString(),
+                                admin_biography.toStdString(),
+                                40,
+                                QDateTime::currentDateTime());
+    database->admins[index_to_save] = adminNew;
+
+    // TODO refactor and make a function when called performs the following loop
+
+    //Update the QTableWidget of the admins
+    //to display the admins after modifing the database
+    int tbl_admins_rows_count = database->admins.size();
+    ui->tbl_admins->setRowCount(tbl_admins_rows_count);
+    ui->tbl_admins->verticalHeader()->setVisible(false);
+    ui->tbl_admins->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    for (auto row = 0; row < tbl_admins_rows_count; row++)
+    {
+        auto admin_data = get_admin_data_as_qstrings(database->admins.at(row));
+
+        ui->tbl_admins->setItem(row, 0, new QTableWidgetItem(admin_data["id"]));
+        ui->tbl_admins->setItem(row, 1, new QTableWidgetItem(admin_data["name"]));
+        ui->tbl_admins->setItem(row, 2, new QTableWidgetItem(admin_data["title"]));
+        ui->tbl_admins->setItem(row, 3, new QTableWidgetItem(admin_data["email"]));
+        ui->tbl_admins->setItem(row, 4, new QTableWidgetItem(admin_data["phone"]));
+    }
+
+
+}
+
+
+
 

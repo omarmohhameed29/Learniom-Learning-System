@@ -45,6 +45,14 @@ private slots:
 
     void on_btn_add_admin_clicked();
 
+    void on_btn_add_admin_form_clicked();
+
+   void on_tbl_admins_cellClicked(int row, int column);
+
+    void on_pushButton_20_clicked();
+
+    void on_pushButton_21_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -274,7 +274,7 @@ QDateEdit::down-arrow
 }</string>
       </property>
       <property name="currentIndex">
-       <number>7</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="P0_Login">
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -6136,7 +6136,7 @@ padding: 0;</string>
                 <number>24</number>
                </property>
                <item>
-                <widget class="QLabel" name="stnt_code_lbl_3">
+                <widget class="QLabel" name="admn_code_lbl">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -6181,7 +6181,7 @@ color: #0E409A;
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_89">
                  <item>
-                  <widget class="QLabel" name="nm_lbl_stud_3">
+                  <widget class="QLabel" name="nm_lbl_admn">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -6268,7 +6268,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="ln_edt_stnt_nme_9">
+                  <widget class="QLineEdit" name="ln_edt_admn_nme_2">
                    <property name="minimumSize">
                     <size>
                      <width>300</width>
@@ -6342,7 +6342,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="ln_edt_stnt_dprtmnt_9">
+                  <widget class="QLineEdit" name="ln_edt_admn_ttle_2">
                    <property name="minimumSize">
                     <size>
                      <width>300</width>
@@ -6416,7 +6416,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="ln_edt_stnt_mail_11">
+                  <widget class="QLineEdit" name="ln_edt_admn_mail_2">
                    <property name="minimumSize">
                     <size>
                      <width>300</width>
@@ -6490,7 +6490,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="ln_edt_stnt_phn_15">
+                  <widget class="QLineEdit" name="ln_edt_admn_phn_2">
                    <property name="minimumSize">
                     <size>
                      <width>300</width>
@@ -6564,7 +6564,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="ln_edt_stnt_phn_16">
+                  <widget class="QLineEdit" name="ln_edt_admn_bio_2">
                    <property name="minimumSize">
                     <size>
                      <width>300</width>
@@ -6807,7 +6807,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="ln_edt_stnt_dprtmnt_10">
+               <widget class="QLineEdit" name="ln_edt_admn_ttle">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -6878,7 +6878,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="ln_edt_stnt_nme_10">
+               <widget class="QLineEdit" name="ln_edt_admn_nme">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -6949,7 +6949,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="ln_edt_stnt_phn_17">
+               <widget class="QLineEdit" name="ln_edt_admn_phn">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -7020,7 +7020,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="ln_edt_stnt_phn_18">
+               <widget class="QLineEdit" name="ln_edt_admn_pass">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -7091,7 +7091,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="ln_edt_stnt_phn_19">
+               <widget class="QLineEdit" name="ln_edt_admn_bio">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -7162,7 +7162,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="ln_edt_stnt_mail_12">
+               <widget class="QLineEdit" name="ln_edt_admn_mail">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -7246,7 +7246,7 @@ color: rgba(0, 0, 0, 0.50);</string>
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="btn_add_student_form_5">
+           <widget class="QPushButton" name="btn_add_admin_form">
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
