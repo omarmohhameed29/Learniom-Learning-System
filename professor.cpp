@@ -21,3 +21,32 @@ Professor::Professor(
     this->ID = ++code;
 
 }
+
+
+int Professor :: get_id(){
+    return this->ID;
+}
+
+std::string Professor :: get_phd(){
+    return phd;
+}
+
+std::string Professor :: get_honors(){
+    return honors;
+}
+
+std::string Professor :: get_additional(){
+    return additional;
+}
+
+
+std::string Professor :: get_graduated_from(){
+    return graduated_from;
+}
+
+QDateTime Professor :: get_joined_on(){
+    return joined_on;
+}
+
+
+

@@ -55,6 +55,16 @@ private slots:
 
     void on_btn_visit_profile_clicked();
 
+    void on_pushButton_delete_prof_clicked();
+
+    void on_pushButton_prof_save_clicked();
+
+    void on_add_prof_form_clicked();
+
+    void on_tbl_professors_cellClicked(int row, int column);
+
+    void on_pushButton_11_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

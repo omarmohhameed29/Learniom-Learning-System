@@ -19,7 +19,7 @@ private:
     std::vector<Course*> courses;
 public:
 
-    Professor(
+   Professor(
         std::string name,
         std::string email,
         std::string phone,
@@ -30,6 +30,16 @@ public:
         std::string graduated_from,
         int age,
         QDateTime joined_on);
+
+
+
+   int get_id();
+   std::string get_phd();
+   std::string get_honors();
+   std::string get_additional();
+   std::string get_graduated_from();
+   QDateTime get_joined_on();
+
 };
 
 #endif // PROFESSOR_H

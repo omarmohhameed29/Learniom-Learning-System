@@ -274,7 +274,7 @@ QDateEdit::down-arrow
 }</string>
       </property>
       <property name="currentIndex">
-       <number>8</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="P0_Login">
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -3708,7 +3708,7 @@ padding: 0;</string>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_34">
                <item>
-                <widget class="QLabel" name="label_48">
+                <widget class="QLabel" name="lbl_prof_main_name">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -3753,7 +3753,7 @@ color: #0E409A;
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_28">
                  <item>
-                  <widget class="QLabel" name="label_49">
+                  <widget class="QLabel" name="prof_code_lbl">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -3779,7 +3779,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_10">
+                  <widget class="QPushButton" name="pushButton_delete_prof">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -3840,7 +3840,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="ln_edt_stnt_nme_3">
+                  <widget class="QLineEdit" name="ln_edt_prof_nme_2">
                    <property name="minimumSize">
                     <size>
                      <width>300</width>
@@ -3914,7 +3914,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="ln_edt_stnt_dprtmnt_3">
+                  <widget class="QLineEdit" name="ln_edt_prof_dprtmnt_2">
                    <property name="minimumSize">
                     <size>
                      <width>300</width>
@@ -3988,7 +3988,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="ln_edt_stnt_mail_3">
+                  <widget class="QLineEdit" name="ln_edt_prof_mail_2">
                    <property name="minimumSize">
                     <size>
                      <width>300</width>
@@ -4062,7 +4062,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="ln_edt_stnt_phn_3">
+                  <widget class="QLineEdit" name="ln_edt_prof_phn_2">
                    <property name="minimumSize">
                     <size>
                      <width>300</width>
@@ -4136,7 +4136,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="ln_edt_stnt_phn_6">
+                  <widget class="QLineEdit" name="ln_edt_prof_grdf_2">
                    <property name="minimumSize">
                     <size>
                      <width>300</width>
@@ -4210,7 +4210,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="ln_edt_stnt_phn_7">
+                  <widget class="QLineEdit" name="ln_edt_prof_phd_2">
                    <property name="minimumSize">
                     <size>
                      <width>300</width>
@@ -4286,7 +4286,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QDateEdit" name="dateEdit_6">
+                    <widget class="QDateEdit" name="dateEdit_join">
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
@@ -4342,7 +4342,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QDateEdit" name="dateEdit_3">
+                    <widget class="QDateEdit" name="dateEdit_birth">
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
@@ -4365,7 +4365,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                 </layout>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_11">
+                <widget class="QPushButton" name="pushButton_prof_save">
                  <property name="minimumSize">
                   <size>
                    <width>92</width>
@@ -4569,7 +4569,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="ln_edt_stnt_nme_4">
+               <widget class="QLineEdit" name="ln_edt_prof_nme">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -4640,7 +4640,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QDateEdit" name="dateEdit_5">
+               <widget class="QDateEdit" name="ln_edt_prof_join">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -4693,7 +4693,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="ln_edt_stnt_phn_4">
+               <widget class="QLineEdit" name="ln_edt_prof_phn">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -4764,7 +4764,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="ln_edt_stnt_mail_4">
+               <widget class="QLineEdit" name="ln_edt_prof_mail">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -4835,7 +4835,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="ln_edt_stnt_dprtmnt_4">
+               <widget class="QLineEdit" name="ln_edt_prof_dprtmnt">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -4906,7 +4906,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QDateEdit" name="dateEdit_4">
+               <widget class="QDateEdit" name="ln_edt_prof_birth_date">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -4959,7 +4959,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="ln_edt_stnt_mail_5">
+               <widget class="QLineEdit" name="ln_edt_prof_grd_unv">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -5030,7 +5030,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="ln_edt_stnt_phn_5">
+               <widget class="QLineEdit" name="ln_edt_prof_phd_sbj">
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
@@ -5114,7 +5114,7 @@ color: rgba(0, 0, 0, 0.50);</string>
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="btn_add_student_form_2">
+           <widget class="QPushButton" name="add_prof_form">
             <property name="sizePolicy">
              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -7306,21 +7306,17 @@ min-width: 90px;</string>
   </widget>
  </widget>
  <tabstops>
-  <tabstop>btn_back</tabstop>
-  <tabstop>btn_logout_1</tabstop>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>lineEdit_2</tabstop>
-  <tabstop>btn_login</tabstop>
-  <tabstop>btn_nav_students</tabstop>
-  <tabstop>pushButton_7</tabstop>
-  <tabstop>btn_nav_admins</tabstop>
-  <tabstop>btn_visit_profile</tabstop>
   <tabstop>btn_logout_2</tabstop>
+  <tabstop>ln_edt_admn_ttle_2</tabstop>
+  <tabstop>lineEdit_9</tabstop>
   <tabstop>lineEdit_3</tabstop>
+  <tabstop>lineEdit_2</tabstop>
+  <tabstop>btn_nav_students</tabstop>
   <tabstop>pushButton_3</tabstop>
   <tabstop>btn_add_student</tabstop>
   <tabstop>comboBox</tabstop>
   <tabstop>comboBox_2</tabstop>
+  <tabstop>btn_nav_admins</tabstop>
   <tabstop>tbl_students</tabstop>
   <tabstop>pushButton_5</tabstop>
   <tabstop>ln_edt_stnt_nme_2</tabstop>
@@ -7342,32 +7338,36 @@ min-width: 90px;</string>
   <tabstop>btn_add_professor</tabstop>
   <tabstop>comboBox_4</tabstop>
   <tabstop>tbl_professors</tabstop>
-  <tabstop>pushButton_10</tabstop>
-  <tabstop>ln_edt_stnt_nme_3</tabstop>
-  <tabstop>ln_edt_stnt_dprtmnt_3</tabstop>
-  <tabstop>ln_edt_stnt_mail_3</tabstop>
-  <tabstop>ln_edt_stnt_phn_3</tabstop>
-  <tabstop>ln_edt_stnt_phn_6</tabstop>
-  <tabstop>ln_edt_stnt_phn_7</tabstop>
-  <tabstop>dateEdit_6</tabstop>
-  <tabstop>dateEdit_3</tabstop>
-  <tabstop>pushButton_11</tabstop>
-  <tabstop>ln_edt_stnt_nme_4</tabstop>
-  <tabstop>dateEdit_5</tabstop>
-  <tabstop>ln_edt_stnt_phn_4</tabstop>
-  <tabstop>ln_edt_stnt_mail_4</tabstop>
-  <tabstop>ln_edt_stnt_dprtmnt_4</tabstop>
-  <tabstop>dateEdit_4</tabstop>
-  <tabstop>ln_edt_stnt_mail_5</tabstop>
-  <tabstop>ln_edt_stnt_phn_5</tabstop>
-  <tabstop>btn_add_student_form_2</tabstop>
-  <tabstop>lineEdit_9</tabstop>
+  <tabstop>pushButton_delete_prof</tabstop>
+  <tabstop>ln_edt_prof_nme_2</tabstop>
+  <tabstop>ln_edt_prof_dprtmnt_2</tabstop>
+  <tabstop>ln_edt_prof_mail_2</tabstop>
+  <tabstop>ln_edt_prof_phn_2</tabstop>
+  <tabstop>ln_edt_prof_grdf_2</tabstop>
+  <tabstop>ln_edt_prof_phd_2</tabstop>
+  <tabstop>dateEdit_join</tabstop>
+  <tabstop>dateEdit_birth</tabstop>
+  <tabstop>pushButton_prof_save</tabstop>
   <tabstop>pushButton_19</tabstop>
-  <tabstop>btn_add_admin</tabstop>
   <tabstop>tbl_admins</tabstop>
-  <tabstop>pushButton_20</tabstop>
   <tabstop>ln_edt_admn_nme_2</tabstop>
-  <tabstop>ln_edt_admn_ttle_2</tabstop>
+  <tabstop>btn_back</tabstop>
+  <tabstop>btn_add_admin</tabstop>
+  <tabstop>pushButton_20</tabstop>
+  <tabstop>btn_logout_1</tabstop>
+  <tabstop>ln_edt_prof_nme</tabstop>
+  <tabstop>ln_edt_prof_dprtmnt</tabstop>
+  <tabstop>ln_edt_prof_mail</tabstop>
+  <tabstop>ln_edt_prof_phn</tabstop>
+  <tabstop>ln_edt_prof_grd_unv</tabstop>
+  <tabstop>ln_edt_prof_phd_sbj</tabstop>
+  <tabstop>ln_edt_prof_join</tabstop>
+  <tabstop>ln_edt_prof_birth_date</tabstop>
+  <tabstop>add_prof_form</tabstop>
+  <tabstop>btn_visit_profile</tabstop>
+  <tabstop>pushButton_7</tabstop>
+  <tabstop>btn_login</tabstop>
+  <tabstop>lineEdit</tabstop>
   <tabstop>ln_edt_admn_mail_2</tabstop>
   <tabstop>ln_edt_admn_phn_2</tabstop>
   <tabstop>ln_edt_admn_bio_2</tabstop>

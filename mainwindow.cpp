@@ -8,6 +8,7 @@
 #include "student.h"
 #include "database.h"
 #include "admin.h"
+#include "professor.h"
 
 
 // Handle Navigation as Single Page Application (SPA)
@@ -46,6 +47,25 @@ std::map<std::string, QString> get_student_data_as_qstrings(Student* student) {
     return result;
 }
 
+
+std::map<std::string, QString> get_professor_data_as_qstrings(Professor *professor) {
+    std::map<std::string, QString> result;
+
+    result["id"] = QString::fromStdString(std::to_string(professor->get_id()));
+    result["name"] = QString::fromStdString(professor->getName());
+    result["email"] = QString::fromStdString(professor->getEmail());
+    result["department"] = QString::fromStdString(professor->getDepartment());
+    result["year"]= QString::fromStdString(professor->get_graduated_from());
+    result["phone"] = QString::fromStdString(professor->getPhone());
+    result["Graduated From"] = QString::fromStdString(professor->get_graduated_from());
+    result["PHD Subject"] = QString::fromStdString(professor->get_phd());
+    // result["Join"] = QString::fromStdString(std::to_string(professor->get_joined_on()));
+    // result["Birth"] = QString::fromStdString(professor->get_graduated_from());
+
+    return result;
+}
+
+
 std::map<std::string, QString> get_admin_data_as_qstrings(Admin* admin) {
     std::map<std::string, QString> result;
 
@@ -70,6 +90,8 @@ std::map<std::string, QString> get_admin_data_as_qstrings(Admin* admin) {
 //In order to control the delete button and the save button
 int row_index_student = NULL;
 int row_index_admin = NULL;
+int row_index_professor = NULL;
+
 
 
 //Helper Function that takes the current clicked row index in the QTableWidget
@@ -122,9 +144,30 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         ui->tbl_students->setItem(row, 4, new QTableWidgetItem(student_data["year"]));
     }
 
+
+
+
     // Setting up professors table
     QHeaderView* professors_table_header = ui->tbl_professors->horizontalHeader();
     professors_table_header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
+
+    int tbl_professors_rows_count = database->professors.size();
+    ui->tbl_professors->setRowCount(tbl_professors_rows_count);
+    ui->tbl_professors->verticalHeader()->setVisible(false);
+    ui->tbl_professors->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    for (auto row = 0; row < tbl_professors_rows_count; row++)
+        {
+            auto prof_data = get_professor_data_as_qstrings(database->professors.at(row));
+
+            ui->tbl_professors->setItem(row, 0, new QTableWidgetItem(prof_data["id"]));
+            ui->tbl_professors->setItem(row, 1, new QTableWidgetItem(prof_data["name"]));
+            ui->tbl_professors->setItem(row, 2, new QTableWidgetItem(prof_data["email"]));
+            ui->tbl_professors->setItem(row, 3, new QTableWidgetItem(prof_data["department"]));
+        }
+
+
+
 
     // Setting up admins table
     QHeaderView* admins_table_header = ui->tbl_admins->horizontalHeader();
@@ -312,10 +355,258 @@ void MainWindow::on_btn_add_student_form_clicked() {
 // Professors
 
 
-
+// P4 Professors
 void MainWindow::on_btn_add_professor_clicked() {
     ui->ViewStack->setCurrentIndex(push_navigation(5));
 }
+
+
+// P5 Add_Professors
+void MainWindow::on_add_prof_form_clicked()
+{
+    validate valid;
+
+    // Variabls that carries the data pulled from the line edits
+    QString professor_name = ui->ln_edt_prof_nme->text();
+    QString department = ui->ln_edt_prof_dprtmnt->text();
+    QString phone_number = ui->ln_edt_prof_phn->text();
+    QString email = ui->ln_edt_prof_mail->text();
+    QString graduation_university = ui->ln_edt_prof_grd_unv->text();
+    QString phd_subject = ui->ln_edt_prof_phd_sbj->text();
+    std::string joined_on = ui->ln_edt_prof_join->text().toStdString();
+    std::string date_of_birth = ui->ln_edt_prof_birth_date->text().toStdString();
+    int graduation_year= ui->cmb_grd_yr->currentText().toInt();
+    int count = 0;
+    int year_birth = 0;
+    int year_join = 0;
+
+
+    for (int j=date_of_birth.size()-1;;j--){
+        if (count==4)
+            break;
+        year_birth += date_of_birth[j] * pow(10, count);
+        count++;
+    }
+
+
+    for (int i=joined_on.size()-1;;i--){
+        if (count==4)
+            break;
+        year_join += joined_on[i] * pow(10, count);
+        count++;
+    }
+
+
+
+
+
+    bool name_is_valid, department_is_valid, phone_is_valid, email_is_valid, graduation_unv_is_valid, phd_subject_is_valid;
+    name_is_valid = valid.name_validate(professor_name);
+    department_is_valid = valid.department_validate(department);
+    phone_is_valid = valid.phone_validate(phone_number);
+    email_is_valid = valid.email_validate(email);
+    graduation_unv_is_valid = valid.name_validate(graduation_university);
+    phd_subject_is_valid = valid.name_validate(phd_subject);
+
+
+
+    // Validating the user input
+    if (name_is_valid && department_is_valid && phone_is_valid && email_is_valid && graduation_unv_is_valid && phd_subject_is_valid) {
+        Professor *professor = new Professor(professor_name.toStdString(),
+                                            email.toStdString(),
+                                            phone_number.toStdString(),
+                                            department.toStdString(),
+                                            phd_subject.toStdString(),
+                                            "Best Resarcher",
+                                            "N/A",
+                                            graduation_university.toStdString(),
+                                            2023-year_join,
+                                            QDateTime::currentDateTime());
+
+
+
+
+        // Insert the user into the database
+        database->professors.push_back(professor);
+        // TODO: Remove later
+        auto professor_data = get_professor_data_as_qstrings(professor);
+        ui->tbl_professors->setRowCount(ui->tbl_professors->rowCount() + 1);
+        ui->tbl_professors->setItem(ui->tbl_professors->rowCount()-1, 0, new QTableWidgetItem(professor_data["id"]));
+        ui->tbl_professors->setItem(ui->tbl_professors->rowCount()-1, 1, new QTableWidgetItem(professor_data["name"]));
+        ui->tbl_professors->setItem(ui->tbl_professors->rowCount()-1, 2, new QTableWidgetItem(professor_data["email"]));
+        ui->tbl_professors->setItem(ui->tbl_professors->rowCount()-1, 3, new QTableWidgetItem(professor_data["department"]));
+        qDebug()<< database->professors.size();
+
+
+    } else {
+        // TODO: Remove later
+        // TODO: Handle feedback to user
+        qDebug()<< "Errorrrr";
+    }
+
+    // Reset all inputs to empty
+    ui->ln_edt_prof_nme->setText("");
+    ui->ln_edt_prof_dprtmnt->setText("");
+    ui->ln_edt_prof_phn->setText("");
+    ui->ln_edt_prof_mail->setText("");
+    ui->ln_edt_prof_grd_unv->setText("");
+    ui->ln_edt_prof_phd_sbj->setText("");
+}
+
+
+
+
+
+//Display the Professor info
+//at the selected row
+
+void MainWindow::on_tbl_professors_cellClicked(int row, int column)
+{
+    qDebug()<< row;
+    int prof_index = row;
+    store_row_index(prof_index);
+    auto prof_data = get_professor_data_as_qstrings(database->professors[prof_index]);
+    ui->lbl_prof_main_name->setText("Professor - " + prof_data["id"]);
+    ui->ln_edt_prof_nme_2->setText(prof_data["name"]);
+    ui->ln_edt_prof_dprtmnt_2->setText(prof_data["department"]);
+    ui->ln_edt_prof_mail_2->setText(prof_data["email"]);
+    ui->ln_edt_prof_phn_2->setText(prof_data["phone"]);
+    ui->ln_edt_prof_grdf_2->setText(prof_data["Graduated From"]);
+    ui->ln_edt_prof_phd_2->setText(prof_data["PHD Subject"]);
+    ui->prof_code_lbl->setText(prof_data["name"]);
+    //ui->dateEdit_join->setText(prof_data["name"]);
+    //ui->dateEdit_birth->setText(prof_data["name"]);
+}
+
+
+
+
+
+//Delete the student
+//At the current row index
+void MainWindow::on_pushButton_delete_prof_clicked()
+{
+    //row index to be deleted
+    int index_to_delete = row_index_professor;
+    //Delete the Professor from the database
+    database->professors.erase(database-> professors.begin() + index_to_delete);
+    qDebug()<< index_to_delete;
+    qDebug()<< database-> professors.size();
+    //Update the QTable Widget of the students
+    //to display the students after modifing the database
+    int tbl_professors_rows_count = database->professors.size();
+    ui->tbl_professors->setRowCount(tbl_professors_rows_count);
+    ui->tbl_professors->verticalHeader()->setVisible(false);
+    ui->tbl_professors->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    for (auto row = 0; row < tbl_professors_rows_count; row++)
+    {
+        auto prof_data = get_professor_data_as_qstrings(database->professors.at(row));
+
+        ui->tbl_professors->setItem(row, 0, new QTableWidgetItem(prof_data["id"]));
+        ui->tbl_professors->setItem(row, 1, new QTableWidgetItem(prof_data["name"]));
+        ui->tbl_professors->setItem(row, 2, new QTableWidgetItem(prof_data["email"]));
+        ui->tbl_professors->setItem(row, 3, new QTableWidgetItem(prof_data["department"]));
+        ui->tbl_professors->setItem(row, 4, new QTableWidgetItem(prof_data["year"]));
+    }
+
+
+
+    //Reset the Fields to default values after deleting the current student
+    ui->lbl_prof_main_name->setText("Professor - id");
+    ui->ln_edt_prof_nme_2->setText("Professor name");
+    ui->ln_edt_prof_dprtmnt_2->setText("Department");
+    ui->ln_edt_stnt_mail_2->setText("Email");
+    ui->ln_edt_stnt_phn_2->setText("Phone Number");
+    ui->ln_edt_prof_grdf_2->setText("Graduated From");
+    ui->ln_edt_prof_phd_2->setText("PHD Subject");
+    ui->prof_code_lbl->setText("name");
+
+
+
+
+
+
+
+}
+
+
+
+// *********************************************************************************** //
+// *********************************************************************************** //
+// *********************************************************************************** //
+
+//Edit the Professor and save it to the database
+void MainWindow::on_pushButton_prof_save_clicked()
+{
+    //Row index of the student to be saved
+    int index_to_save = row_index_professor;
+
+    QString professor_name = ui->ln_edt_prof_nme_2->text();
+    QString department = ui->ln_edt_prof_dprtmnt_2->text();
+    QString phone_number = ui->ln_edt_prof_phn_2->text();
+    QString email = ui->ln_edt_prof_mail_2->text();
+    QString graduation_university = ui->ln_edt_prof_grdf_2->text();
+    QString phd_subject = ui->ln_edt_prof_phd_2->text();
+
+    /*
+    std::string joined_on = ui->ln_edt_prof_join->text().toStdString();
+    std::string date_of_birth = ui->ln_edt_prof_birth_date->text().toStdString();
+    int graduation_year= ui->cmb_grd_yr->currentText().toInt();
+    int year_birth = 0;
+    int count = 0;
+    for (int j=date_of_birth.size()-1;;j--){
+        if (count==4)
+            break;
+        year_birth += date_of_birth[j] * pow(10, count);
+        count++;
+    }
+*/
+    int age = database->professors[index_to_save]->getAge();
+
+    // creating new student from with the edited features
+    //replacing the old student with the updated version
+    Professor *professorNew = new Professor (professor_name.toStdString(),
+                                             email.toStdString(),
+                                             phone_number.toStdString(),
+                                             department.toStdString(),
+                                             phd_subject.toStdString(),
+                                             "Best Resarcher",
+                                             "N/A",
+                                             graduation_university.toStdString(),
+                                             2023,
+                                             QDateTime::currentDateTime());
+    database->professors[index_to_save] = professorNew;
+
+
+    // TODO refactor and make a function when called performs the following loop
+    //Update the QTable Widget of the Professors
+    //to display the Professors after modifing the database
+    int tbl_professors_rows_count = database->professors.size();
+    ui->tbl_professors->setRowCount(tbl_professors_rows_count);
+    ui->tbl_professors->verticalHeader()->setVisible(false);
+    ui->tbl_professors->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    for (auto row = 0; row < tbl_professors_rows_count; row++)
+    {
+        auto prof_data = get_professor_data_as_qstrings(database->professors.at(row));
+
+        ui->tbl_professors->setItem(row, 0, new QTableWidgetItem(prof_data["id"]));
+        ui->tbl_professors->setItem(row, 1, new QTableWidgetItem(prof_data["name"]));
+        ui->tbl_professors->setItem(row, 2, new QTableWidgetItem(prof_data["email"]));
+        ui->tbl_students->setItem(row, 3, new QTableWidgetItem(prof_data["department"]));
+    }
+
+
+}
+// *********************************************************************************** //
+// *********************************************************************************** //
+// *********************************************************************************** //
+
+
+
+// *********************************************************************************************************** //
+
+
+
 
 //Display the student info
 //at the selected row
@@ -617,5 +908,17 @@ void MainWindow::on_btn_visit_profile_clicked()
     ui->label_82->setText(QDateTime(admin->get_creation_date()).toString("yyyy.MM.dd" ));
     ui->label_77->setText(QString::fromStdString(admin->get_biography()));
     ui->label_67->setText(QString::fromStdString(admin->get_speciality()));
+}
+
+
+
+
+
+
+
+
+void MainWindow::on_pushButton_11_clicked()
+{
+
 }
 
