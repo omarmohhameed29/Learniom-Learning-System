@@ -10,7 +10,7 @@
 #include "admin.h"
 #include "professor.h"
 
-
+#include "fstream"
 
 // Handle Navigation as Single Page Application (SPA)
 // Using a stack and a StackedWidget
@@ -34,7 +34,63 @@ void clear_navigation() {
 
 Database* database;
 Admin* login_admin;
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//export to csv
+//To be called on clicking the export button in student
+void stud_export_to_csv(){
+    std::ofstream os;
+    os.open("studentsData.txt", std::ios::app);
+    for(auto student : database->students)
+    {
+        os<< student->get_id() << "," << student->getName() << "," << student->getDepartment() << "," <<student->getPhone() << "," << student->getEmail()<<Qt::endl;
+    }
 
+    os.close();
+}
+
+//To be called on clicking the export button in professor
+void prof_export_to_csv(){
+    std::ofstream os;
+    os.open("professorsData.txt", std::ios::app);
+    for(auto professor : database->professors)
+    {
+        os<< professor->get_id() << "," << professor->getName() << "," << professor->getDepartment() << "," <<professor->getPhone() << "," << professor->getEmail()<<Qt::endl;
+    }
+
+    os.close();
+}
+//To be called on clicking the export button in admin
+void export_to_csv(){
+    std::ofstream os;
+    os.open("adminsData.txt", std::ios::app);
+    for(auto admin : database->admins)
+    {
+        os<< admin->get_id() << "," << admin->getName() << "," << admin->getDepartment() << "," <<admin->getPhone() << "," << admin->getEmail()<<Qt::endl;
+    }
+
+    os.close();
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//import csv
+//import studentsData.txt
+void stud_import_from_csv(){
+    std::ifstream is;
+    std::vector<QString> imported_students;
+    is.open("adminsData.txt", std::ios::app);
+    std::string Line;
+    while(std::getline(is, Line))
+    {
+        imported_students.push_back(QString::fromStdString(Line));
+        qDebug()<<"importing";
+    }
+    is.close();
+    //TODO we created a vector carrying each line i.e each row in the form of csv
+    //loop over each item in the vector and split at the comma then extract the attributes for the student and create a new student then pushit
+    // to the student database mock then show the modifications on the QTableWidget
+    //Do Not remove those notes for me to continue
+    // Consider repeating the same for professors, admins and courses 3chan 3luka t3b
+}
 // TODO: move to student class ::: Keep as it is
 std::map<std::string, QString> get_student_data_as_qstrings(Student* student) {
     std::map<std::string, QString> result;
