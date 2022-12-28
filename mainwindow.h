@@ -69,6 +69,10 @@ private slots:
 
     void on_btn_add_course_clicked();
 
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_3_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

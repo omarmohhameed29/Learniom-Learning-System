@@ -11,6 +11,7 @@
 #include "professor.h"
 
 
+
 // Handle Navigation as Single Page Application (SPA)
 // Using a stack and a StackedWidget
 std::stack<int> navigation_stack;
@@ -966,5 +967,52 @@ void MainWindow::on_pushButton_11_clicked()
 void MainWindow::on_btn_add_course_clicked()
 {
     ui->ViewStack->setCurrentIndex(push_navigation(10));
+}
+
+
+
+
+
+
+
+
+
+
+void MainWindow::on_pushButton_3_clicked()
+{   //get the name to search for from the search bar
+    std::string student_name = ui->lineEdit_3->text().toStdString();
+    qDebug()<<QString::fromStdString(student_name);
+    bool found = 0;
+    //Loop all over the students database to search for the given name
+    for(auto i = 0; i<database->students.size(); i++)
+    {
+        if(student_name == database->students[i]->getName())
+        {
+            //if student is found
+            qDebug()<<QString::fromStdString(database->students[i]->getName());
+            int row_index = i;
+            qDebug()<<"before reached";
+            qDebug()<<"reached";
+            found = 1;
+            //reaches the matching items in the Qwidget table
+            auto matching_items = ui->tbl_students->findItems(QString::fromStdString(student_name), Qt::MatchContains);
+            for(auto item : matching_items)
+            {
+                //select the item found
+                item->setSelected(true);
+                //make the item clicked to display the info in the card to the left
+                ui->tbl_students->cellClicked(row_index, 0);
+            }
+
+            break;
+        }
+    }
+    // Student not found in the database
+    if(!found)
+    {
+       //TODO Display Not student not found
+        qDebug()<<"Student not found";
+    }
+
 }
 
