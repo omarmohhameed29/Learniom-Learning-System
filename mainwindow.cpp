@@ -548,22 +548,9 @@ void MainWindow::on_pushButton_prof_save_clicked()
     QString graduation_university = ui->ln_edt_prof_grdf_2->text();
     QString phd_subject = ui->ln_edt_prof_phd_2->text();
 
-    /*
-    std::string joined_on = ui->ln_edt_prof_join->text().toStdString();
-    std::string date_of_birth = ui->ln_edt_prof_birth_date->text().toStdString();
-    int graduation_year= ui->cmb_grd_yr->currentText().toInt();
-    int year_birth = 0;
-    int count = 0;
-    for (int j=date_of_birth.size()-1;;j--){
-        if (count==4)
-            break;
-        year_birth += date_of_birth[j] * pow(10, count);
-        count++;
-    }
-*/
-    int age = database->professors[index_to_save]->getAge();
 
-    // creating new student from with the edited features
+
+    // creating new Professor from with the edited features
     //replacing the old student with the updated version
     Professor *professorNew = new Professor (professor_name.toStdString(),
                                              email.toStdString(),
@@ -594,6 +581,9 @@ void MainWindow::on_pushButton_prof_save_clicked()
         ui->tbl_professors->setItem(row, 2, new QTableWidgetItem(prof_data["email"]));
         ui->tbl_students->setItem(row, 3, new QTableWidgetItem(prof_data["department"]));
     }
+
+
+
 
 
 }

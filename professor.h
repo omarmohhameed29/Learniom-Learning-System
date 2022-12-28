@@ -32,7 +32,6 @@ public:
         QDateTime joined_on);
 
 
-
    int get_id();
    std::string get_phd();
    std::string get_honors();
