@@ -34,6 +34,7 @@ public:
     std::string get_biography() const;
     int get_dateOfbirth() const;
 
+
 };
 
 #endif // ADMIN_H

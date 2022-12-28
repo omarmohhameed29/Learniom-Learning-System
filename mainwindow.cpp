@@ -1244,8 +1244,6 @@ void MainWindow::on_pushButton_13_clicked()
                 {
                     //select the item found
                     item->setSelected(true);
-                    //make the item clicked to display the info in the card to the left
-                    ui->tbl_courses->cellClicked(row_index, 0);
                 }
 
                 break;
@@ -1374,4 +1372,43 @@ void MainWindow::on_comboBox_10_currentIndexChanged(int index)
 
 
 
+
+
+void MainWindow::on_pushButton_19_clicked()
+{
+    //get the admin name to search for from the search bar
+        std::string admin_name = ui->lineEdit_9->text().toStdString();
+        qDebug()<<QString::fromStdString(admin_name);
+        bool found = 0;
+        //Loop all over the admin database to search for the given name
+        for(auto i = 0; i < database->admins.size(); i++)
+        {
+            if(admin_name == database->admins[i]->getName())
+            {
+                //if admin is found
+                qDebug()<<QString::fromStdString(database->admins[i]->getName());
+                int row_index = i;
+                qDebug()<<"before reached";
+                qDebug()<<"reached";
+                found = 1;
+                //searching for the matching item in the Qwidget table
+                auto matching_item = ui->tbl_admins->findItems(QString::fromStdString(admin_name), Qt::MatchContains);
+                for(auto item : matching_item)
+                {
+                    //select the item found
+                    item->setSelected(true);
+                    //make the item clicked to display the info in the card to the left
+                    ui->tbl_admins->cellClicked(row_index, 0);
+                }
+
+                break;
+            }
+        }
+        //  Admins not found in the database
+        if(!found)
+        {
+           //TODO Display Not Course not found
+            qDebug()<<"Admin not found";
+        }
+}
 

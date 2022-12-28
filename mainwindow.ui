@@ -334,7 +334,7 @@ QTimeEdit::down-arrow
 }</string>
       </property>
       <property name="currentIndex">
-       <number>9</number>
+       <number>7</number>
       </property>
       <widget class="QWidget" name="P0_Login">
        <layout class="QHBoxLayout" name="horizontalLayout">
