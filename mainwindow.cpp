@@ -1013,3 +1013,73 @@ void MainWindow::on_pushButton_3_clicked()
 
 }
 
+
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+    QString filter_yr = ui->comboBox->currentText();
+    qDebug()<<filter_yr;
+    std::vector<Student*> filtered_studens;
+    for(auto student : database->students)
+    {
+        if(QString::fromStdString(std::to_string(student->getGraduation_year())) == filter_yr)
+            filtered_studens.push_back(student);
+    }
+
+    // Setting up students table
+    QHeaderView* students_table_header = ui->tbl_students->horizontalHeader();
+    students_table_header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
+
+    int tbl_students_rows_count = filtered_studens.size();
+    ui->tbl_students->setRowCount(tbl_students_rows_count);
+    ui->tbl_students->verticalHeader()->setVisible(false);
+    ui->tbl_students->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    for (auto row = 0; row < tbl_students_rows_count; row++) {
+        auto student_data = get_student_data_as_qstrings(filtered_studens.at(row));
+
+        ui->tbl_students->setItem(row, 0, new QTableWidgetItem(student_data["id"]));
+        ui->tbl_students->setItem(row, 1, new QTableWidgetItem(student_data["name"]));
+        ui->tbl_students->setItem(row, 2, new QTableWidgetItem(student_data["email"]));
+        ui->tbl_students->setItem(row, 3, new QTableWidgetItem(student_data["department"]));
+        ui->tbl_students->setItem(row, 4, new QTableWidgetItem(student_data["year"]));
+    }
+
+    qDebug()<<"reached";
+    qDebug()<<QString::fromStdString(std::to_string(filtered_studens.size()));
+}
+
+
+void MainWindow::on_comboBox_2_currentIndexChanged(int index)
+{
+    QString department = ui->comboBox_2->currentText();
+    qDebug()<<department;
+    std::vector<Student*> filtered_studens;
+    for(auto student : database->students)
+    {
+        if(QString::fromStdString(student->getDepartment()) == department)
+            filtered_studens.push_back(student);
+    }
+    // Setting up students table
+    QHeaderView* students_table_header = ui->tbl_students->horizontalHeader();
+    students_table_header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
+
+    int tbl_students_rows_count = filtered_studens.size();
+    ui->tbl_students->setRowCount(tbl_students_rows_count);
+    ui->tbl_students->verticalHeader()->setVisible(false);
+    ui->tbl_students->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    for (auto row = 0; row < tbl_students_rows_count; row++) {
+        auto student_data = get_student_data_as_qstrings(filtered_studens.at(row));
+
+        ui->tbl_students->setItem(row, 0, new QTableWidgetItem(student_data["id"]));
+        ui->tbl_students->setItem(row, 1, new QTableWidgetItem(student_data["name"]));
+        ui->tbl_students->setItem(row, 2, new QTableWidgetItem(student_data["email"]));
+        ui->tbl_students->setItem(row, 3, new QTableWidgetItem(student_data["department"]));
+        ui->tbl_students->setItem(row, 4, new QTableWidgetItem(student_data["year"]));
+    }
+
+    qDebug()<<"reached";
+    qDebug()<<QString::fromStdString(std::to_string(filtered_studens.size()));
+
+}
+
