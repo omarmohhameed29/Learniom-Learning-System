@@ -1,19 +1,23 @@
 #include <algorithm>
 #include "course.h"
+static int course_code = 0;
 
-Course::Course(std::string name,
-       std::string code,
+// code to be added
+// week day to be edited
+// type to be edited
+Course::Course(int ID,
+        std::string name,
        std::string department,
        std::string category,
        std::string hall,
-       WeekDay day,
-       CourseType type,
+       std::string day,
+       std::string type,
        QDateTime start_time,
        QDateTime end_time,
        int academic_year)
 {
     this->name = name;
-    this->code = code;
+    this->code = 001;
     this->department = department,
     this->category = category;
     this->hall = hall;
@@ -22,11 +26,49 @@ Course::Course(std::string name,
     this->start_time = start_time;
     this->end_time = end_time;
     this->academic_year = academic_year;
+    this->ID = ++course_code;
 
     students = std::vector<Student*>();
     professors = std::vector<Professor*>();
     students_grades = std::map<Student*, float>();
 };
+
+std::string Course::get_name() const {
+    return name;
+}
+
+std::string Course::get_code() const {
+    return code;
+}
+
+std::string Course::get_department() const {
+    return department;
+}
+
+std::string Course::get_category() const {
+    return category;
+}
+
+std::string Course::get_hall() const {
+    return hall;
+}
+
+std::string Course::get_type() const {
+    return type;
+}
+
+int Course::get_academic_year() const {
+    return academic_year;
+}
+
+int Course::get_ID() const {
+    return ID;
+}
+// to be edited later
+int Course::get_num_std() const {
+    return 500;
+
+}
 
 void Course::add_student(Student* student) {
     students.push_back(student);

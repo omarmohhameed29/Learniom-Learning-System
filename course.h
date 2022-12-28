@@ -25,26 +25,39 @@ private:
     std::string department;
     std::string category;
     std::string hall;
-    WeekDay day;
-    CourseType type;
+    std::string day;
+    std::string type;
     QDateTime start_time;
     QDateTime end_time;
     int academic_year;
+    int ID;
     std::vector<Student*> students;
     std::vector <Professor*> professors;
     std::map<Student*, float> students_grades;
 
 public:
-    Course(std::string name,
-           std::string code,
+    Course(int ID,
+           std::string name,
            std::string department,
            std::string category,
            std::string hall,
-           WeekDay day,
-           CourseType type,
+           std::string day,
+           std::string type,
            QDateTime start_time,
            QDateTime end_time,
            int academic_year);
+
+
+
+    std::string get_name() const;
+    std::string get_code() const;
+    std::string get_department() const;
+    std::string get_category() const;
+    std::string get_hall() const;
+    std::string get_type() const;
+    int get_academic_year() const;
+    int get_ID() const;
+    int get_num_std() const;
 
     /// \brief add_student
     /// Add a given student into the students vector in the course

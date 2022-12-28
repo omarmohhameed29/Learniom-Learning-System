@@ -63,19 +63,29 @@ private slots:
 
     void on_tbl_professors_cellClicked(int row, int column);
 
-    void on_pushButton_11_clicked();
+   // void on_pushButton_11_clicked();
 
     void on_btn_nav_courses_clicked();
 
     void on_btn_add_course_clicked();
 
-    void on_pushButton_9_clicked();
+   // void on_pushButton_9_clicked();
 
     void on_pushButton_3_clicked();
 
     void on_comboBox_currentIndexChanged(int index);
 
     void on_comboBox_2_currentIndexChanged(int index);
+
+    void on_pushButton_13_clicked();
+
+    void on_comboBox_7_currentIndexChanged(int index);
+
+    void on_comboBox_8_currentIndexChanged(int index);
+
+    void on_comboBox_10_currentIndexChanged(int index);
+
+    void on_pushButton_15_clicked();
 
 private:
     Ui::MainWindow *ui;
