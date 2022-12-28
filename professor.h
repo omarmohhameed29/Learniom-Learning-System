@@ -15,7 +15,8 @@ private:
     std::string honors;
     std::string additional;
     std::string graduated_from;
-    QDateTime joined_on;
+    std::string joined_on;
+    std::string birth;
     std::vector<Course*> courses;
 public:
 
@@ -29,7 +30,8 @@ public:
         std::string additional,
         std::string graduated_from,
         int age,
-        QDateTime joined_on);
+        std::string birth,
+        std::string joined_on);
 
 
    int get_id();
@@ -37,7 +39,8 @@ public:
    std::string get_honors();
    std::string get_additional();
    std::string get_graduated_from();
-   QDateTime get_joined_on();
+   std::string get_joined_on();
+   std::string get_birth();
 
 };
 
