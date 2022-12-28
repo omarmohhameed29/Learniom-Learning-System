@@ -10,7 +10,8 @@ Professor::Professor(
         std::string additional,
         std::string graduated_from,
         int age,
-        QDateTime joined_on)
+        std::string birth,
+        std::string joined_on)
         : User(name, email, phone, department, age)
 {
     this->phd = phd;
@@ -18,6 +19,7 @@ Professor::Professor(
     this->additional = additional;
     this->graduated_from = graduated_from;
     this->joined_on = joined_on;
+    this->birth = birth;
     this->ID = ++code;
 
 }
@@ -44,9 +46,12 @@ std::string Professor :: get_graduated_from(){
     return graduated_from;
 }
 
-QDateTime Professor :: get_joined_on(){
+std::string Professor :: get_joined_on(){
     return joined_on;
 }
 
+std::string Professor :: get_birth(){
+    return birth;
+}
 
 
