@@ -59,12 +59,20 @@ std::map<std::string, QString> get_professor_data_as_qstrings(Professor *profess
     result["phone"] = QString::fromStdString(professor->getPhone());
     result["Graduated From"] = QString::fromStdString(professor->get_graduated_from());
     result["PHD Subject"] = QString::fromStdString(professor->get_phd());
-    // result["Join"] = QString::fromStdString(std::to_string(professor->get_joined_on()));
-    // result["Birth"] = QString::fromStdString(professor->get_graduated_from());
+    result["Join"] = QString::fromStdString(professor->get_joined_on());
+    result["Birth"] = QString::fromStdString(professor->get_birth());
 
     return result;
 }
 
+
+/*
+std::map<QString, QDateTime> convert_String_DateTime (QString element){
+    std::map<QString, QDateTime> converted;
+
+    converted["Join_Correct"] =
+}
+*/
 
 std::map<std::string, QString> get_admin_data_as_qstrings(Admin* admin) {
     std::map<std::string, QString> result;
@@ -100,9 +108,20 @@ void store_row_index(int row){
     row_index_student = row;
 }
 
+
+void store_row_index_professor(int row){
+    row_index_professor = row;
+}
+
 void store_row_index_admin(int row){
     row_index_admin = row;
 }
+
+
+
+
+
+
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
 
@@ -373,9 +392,12 @@ void MainWindow::on_add_prof_form_clicked()
     QString email = ui->ln_edt_prof_mail->text();
     QString graduation_university = ui->ln_edt_prof_grd_unv->text();
     QString phd_subject = ui->ln_edt_prof_phd_sbj->text();
-    std::string joined_on = ui->ln_edt_prof_join->text().toStdString();
-    std::string date_of_birth = ui->ln_edt_prof_birth_date->text().toStdString();
+    QString joined_on = ui->dateEdit_join->text();
+    QString date_of_birth = ui->dateEdit_birth->text();
     int graduation_year= ui->cmb_grd_yr->currentText().toInt();
+
+
+ /*
     int count = 0;
     int year_birth = 0;
     int year_join = 0;
@@ -395,7 +417,7 @@ void MainWindow::on_add_prof_form_clicked()
         year_join += joined_on[i] * pow(10, count);
         count++;
     }
-
+*/
 
 
 
@@ -420,8 +442,9 @@ void MainWindow::on_add_prof_form_clicked()
                                             "Best Resarcher",
                                             "N/A",
                                             graduation_university.toStdString(),
-                                            2023-year_join,
-                                            QDateTime::currentDateTime());
+                                            2023,
+                                            joined_on.toStdString(),
+                                            date_of_birth.toStdString());
 
 
 
@@ -444,6 +467,17 @@ void MainWindow::on_add_prof_form_clicked()
         qDebug()<< "Errorrrr";
     }
 
+
+
+
+        QDate date = QDate::currentDate();
+        QString dateString_join = date.toString();
+
+        QString date_string_on_db = "20/12/2015";
+        QDate Date;
+        Date.fromString(date_string_on_db,"dd/MM/YYYY");
+
+
     // Reset all inputs to empty
     ui->ln_edt_prof_nme->setText("");
     ui->ln_edt_prof_dprtmnt->setText("");
@@ -451,6 +485,7 @@ void MainWindow::on_add_prof_form_clicked()
     ui->ln_edt_prof_mail->setText("");
     ui->ln_edt_prof_grd_unv->setText("");
     ui->ln_edt_prof_phd_sbj->setText("");
+    //ui->dateEdit_join->setDate(dateString_join);
 }
 
 
@@ -464,7 +499,7 @@ void MainWindow::on_tbl_professors_cellClicked(int row, int column)
 {
     qDebug()<< row;
     int prof_index = row;
-    store_row_index(prof_index);
+    store_row_index_professor(prof_index);
     auto prof_data = get_professor_data_as_qstrings(database->professors[prof_index]);
     ui->lbl_prof_main_name->setText("Professor - " + prof_data["id"]);
     ui->ln_edt_prof_nme_2->setText(prof_data["name"]);
@@ -474,8 +509,8 @@ void MainWindow::on_tbl_professors_cellClicked(int row, int column)
     ui->ln_edt_prof_grdf_2->setText(prof_data["Graduated From"]);
     ui->ln_edt_prof_phd_2->setText(prof_data["PHD Subject"]);
     ui->prof_code_lbl->setText(prof_data["name"]);
-    //ui->dateEdit_join->setText(prof_data["name"]);
-    //ui->dateEdit_birth->setText(prof_data["name"]);
+    ui->dateEdit_join->setDateTime(QDateTime::fromString(prof_data["join"]));
+    ui->dateEdit_birth->setDateTime(QDateTime::fromString(prof_data["birth"]));
 }
 
 
@@ -548,20 +583,31 @@ void MainWindow::on_pushButton_prof_save_clicked()
     QString graduation_university = ui->ln_edt_prof_grdf_2->text();
     QString phd_subject = ui->ln_edt_prof_phd_2->text();
 
+    std::string joined_on = ui->dateEdit_join->text().toStdString();
+    int year_join = 0;
+    int count = 0;
 
 
+
+    for (int i=joined_on.size()-1;;i--){
+        if (count==4)
+            break;
+        year_join += joined_on[i] * pow(10, count);
+        count++;
+    }
     // creating new Professor from with the edited features
     //replacing the old student with the updated version
-    Professor *professorNew = new Professor (professor_name.toStdString(),
-                                             email.toStdString(),
-                                             phone_number.toStdString(),
-                                             department.toStdString(),
-                                             phd_subject.toStdString(),
-                                             "Best Resarcher",
-                                             "N/A",
-                                             graduation_university.toStdString(),
-                                             2023,
-                                             QDateTime::currentDateTime());
+    Professor *professorNew = new Professor(professor_name.toStdString(),
+                                        email.toStdString(),
+                                        phone_number.toStdString(),
+                                        department.toStdString(),
+                                        phd_subject.toStdString(),
+                                        "Best Resarcher",
+                                        "N/A",
+                                        graduation_university.toStdString(),
+                                        2023-year_join,
+                                        "2023",
+                                        "2000");
     database->professors[index_to_save] = professorNew;
 
 
