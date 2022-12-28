@@ -958,10 +958,7 @@ void MainWindow::on_btn_visit_profile_clicked()
 
 
 
-void MainWindow::on_pushButton_11_clicked()
-{
 
-}
 
 // TODO: clean this mess w yarab sabrni
 void MainWindow::on_btn_add_course_clicked()
