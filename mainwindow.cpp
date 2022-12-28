@@ -302,6 +302,10 @@ void MainWindow::on_btn_nav_admins_clicked() {
     ui->ViewStack->setCurrentIndex(push_navigation(7));
 }
 
+void MainWindow::on_btn_nav_courses_clicked() {
+    ui->ViewStack->setCurrentIndex(push_navigation(9));
+}
+
 // P2_Students
 void MainWindow::on_btn_add_student_clicked() {
     ui->ViewStack->setCurrentIndex(push_navigation(3));
@@ -956,5 +960,11 @@ void MainWindow::on_btn_visit_profile_clicked()
 void MainWindow::on_pushButton_11_clicked()
 {
 
+}
+
+// TODO: clean this mess w yarab sabrni
+void MainWindow::on_btn_add_course_clicked()
+{
+    ui->ViewStack->setCurrentIndex(push_navigation(10));
 }
 

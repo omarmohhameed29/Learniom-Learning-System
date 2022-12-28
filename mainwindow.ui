@@ -334,7 +334,7 @@ QTimeEdit::down-arrow
 }</string>
       </property>
       <property name="currentIndex">
-       <number>10</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="P0_Login">
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -1451,7 +1451,7 @@ color: rgba(0, 0, 0, 0.50);</string>
                        </layout>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_7">
+                       <widget class="QPushButton" name="btn_nav_courses">
                         <property name="sizePolicy">
                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                           <horstretch>0</horstretch>
@@ -1673,6 +1673,12 @@ text-align: center;</string>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>0</height>
+             </size>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: #fff;
@@ -7474,7 +7480,7 @@ min-width: 90px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_add_student_3">
+             <widget class="QPushButton" name="btn_add_course">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>1</horstretch>
@@ -9055,7 +9061,7 @@ border: 1px solid rgb(227, 227, 227);</string>
   <tabstop>ln_edt_prof_birth_date</tabstop>
   <tabstop>add_prof_form</tabstop>
   <tabstop>btn_visit_profile</tabstop>
-  <tabstop>pushButton_7</tabstop>
+  <tabstop>btn_nav_courses</tabstop>
   <tabstop>btn_login</tabstop>
   <tabstop>lineEdit</tabstop>
   <tabstop>ln_edt_admn_mail_2</tabstop>
