@@ -56,5 +56,3 @@ Admin::Admin(
         return 2023-getAge() ; //function to get date of birth
     }
 
-
-

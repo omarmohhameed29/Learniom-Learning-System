@@ -81,20 +81,6 @@ public:
         return(!is_empty(password));
     }
 
-    bool type_validate(QString type){
-        return(!is_empty(type));
-    }
-
-    bool category_validate(QString category){
-        return(!is_empty(category));
-    }
-
-    bool hall_validate(QString hall){
-        return(!is_empty(hall));
-    }
-
-
-
 };
 
 
