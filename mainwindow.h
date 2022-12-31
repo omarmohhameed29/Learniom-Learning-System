@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QTableWidgetItem>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -92,6 +92,10 @@ private slots:
     void on_pushButton_9_clicked();
 
     void on_comboBox_4_currentIndexChanged(int index);
+
+    void on_pushButton_18_clicked();
+
+    void on_tbl_students_4_itemChanged(QTableWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;

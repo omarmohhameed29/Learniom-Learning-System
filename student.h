@@ -13,8 +13,8 @@ class Student : public User {
 private:
     int ID;
     int graduation_year;
-    std::vector<Course*> courses;
-    std::map<Course*, float> courses_grades;
+    std::vector<std::string> courses;
+    std::map<std::string, float> courses_grades;
 
 public:
     Student(
@@ -27,10 +27,10 @@ public:
 
     int get_id();
     int getGraduation_year() const;
-    std::vector<Course*> get_courses();
-    void set_courses(std::vector<Course*>);
-    std::map<Course*, float> get_courses_grades();
-    void set_courses_grades(std::map<Course*, float> courses_grades);
+    std::vector<std::string> get_courses();
+    void set_courses(std::string course);
+    std::map<std::string, float> get_courses_grades();
+    void set_courses_grades(std::string course , float grade);
 
 
 };

@@ -295,6 +295,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 
 
+
+
 }
 
 MainWindow::~MainWindow() {
@@ -1487,5 +1489,79 @@ void MainWindow::on_comboBox_4_currentIndexChanged(int index)
 
     qDebug()<<"reached";
     qDebug()<<QString::fromStdString(std::to_string(filtered_professors.size()));
+}
+//checks whether there is a duplicate student id
+bool unique_id(std::vector<int> existance, int id)
+{
+    for(int x : existance)
+    {
+        if(x == id)
+            return false;
+    }
+    return true;
+}
+//global variable keeps track of existing students in the course
+std::vector<int> existance;
+Student* store_current_student = nullptr;
+void MainWindow::on_pushButton_18_clicked()
+{
+
+    int found = 0;
+    int id = ui->ln_edt_stnt_nme_8->text().toInt();
+    qDebug()<<"ID Pulled";
+
+    for(auto student : database->students)
+    {
+        if(id == student->get_id() && unique_id(existance, id))
+        {
+            store_current_student = student;
+            qDebug()<<unique_id(existance, id);
+            qDebug()<<"reached";
+            existance.push_back(id);
+            ui->tbl_students_4->setRowCount(ui->tbl_students_4->rowCount() + 1);
+
+            QTableWidgetItem* id_item = new QTableWidgetItem(QString::fromStdString(std::to_string(student->get_id())));
+            id_item->setFlags(id_item->flags() &  ~Qt::ItemIsEditable);
+            ui->tbl_students_4->setItem(ui->tbl_students_4->rowCount()-1, 0, id_item);
+
+            QTableWidgetItem* name_item = new QTableWidgetItem(QString::fromStdString(student->getName()));
+            name_item->setFlags(name_item->flags() &  ~Qt::ItemIsEditable);
+            ui->tbl_students_4->setItem(ui->tbl_students_4->rowCount()-1, 1, name_item);
+
+            ui->tbl_students_4->setItem(ui->tbl_students_4->rowCount()-1, 2, new QTableWidgetItem("N/A"));
+
+            qDebug()<<"ended";
+            found  = 1;
+
+            student->set_courses(ui->ln_edt_stnt_nme_5->text().toStdString());
+            student->set_courses_grades(ui->ln_edt_stnt_nme_5->text().toStdString(),-1);
+            break;
+
+        }
+
+
+    }
+    if(!unique_id(existance, id))
+    {
+        qDebug()<<"Added student";
+        //TODO display the above
+    }
+    else if(!found)
+    {
+        qDebug()<<"Not found";
+        //TODO display student not found
+    }
+    ui->ln_edt_stnt_nme_8->clear();
+
+}
+
+
+void MainWindow::on_tbl_students_4_itemChanged(QTableWidgetItem *item)
+{
+    qDebug()<<"got here";
+    float grade = item->text().toFloat();
+    qDebug()<<grade;
+    store_current_student->set_courses_grades(ui->ln_edt_stnt_nme_5->text().toStdString(),grade);
+
 }
 

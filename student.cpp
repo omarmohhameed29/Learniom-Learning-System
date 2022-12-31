@@ -15,7 +15,6 @@ Student::Student(
         : User(name, email, phone, department, age)
 {
     this->graduation_year = graduation_year;
-    this->courses = std::vector<Course*>();
     this->ID = ++code;
 };
 
@@ -24,23 +23,23 @@ int Student::get_id()
     return this->ID;
 }
 
-std::vector<Course*> Student::get_courses()
+std::vector<std::string> Student::get_courses()
 {
     return this->courses;
 }
 
-void Student::set_courses(std::vector<Course*> course)
+void Student::set_courses(std::string course)
 {
-    this->courses = course;
+    this->courses.push_back(course);
 }
 
-std::map<Course*, float> Student::get_courses_grades()
+std::map<std::string, float> Student::get_courses_grades()
 {
     return this->courses_grades;
 }
 
-void Student::set_courses_grades(std::map<Course*, float> courses_grades)
+void Student::set_courses_grades(std::string course , float grade)
 {
-    this->courses_grades = courses_grades;
+    this->courses_grades[course] = grade;
 }
 
