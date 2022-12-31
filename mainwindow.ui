@@ -334,7 +334,7 @@ QTimeEdit::down-arrow
 }</string>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>10</number>
       </property>
       <widget class="QWidget" name="P0_Login">
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -8023,7 +8023,7 @@ border: 1px solid rgb(227, 227, 227);</string>
        </layout>
       </widget>
       <widget class="QWidget" name="P10_Course_View">
-       <layout class="QHBoxLayout" name="horizontalLayout_110">
+       <layout class="QHBoxLayout" name="horizontalLayout_45">
         <item>
          <spacer name="horizontalSpacer_83">
           <property name="orientation">
@@ -8041,7 +8041,7 @@ border: 1px solid rgb(227, 227, 227);</string>
          </spacer>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_159">
+         <layout class="QVBoxLayout" name="verticalLayout_58">
           <item>
            <widget class="QWidget" name="card1_16" native="true">
             <property name="sizePolicy">
@@ -8267,7 +8267,7 @@ color: rgba(0, 0, 0, 0.50);</string>
                     <string>SBME</string>
                    </property>
                    <property name="placeholderText">
-                    <string>Enter name</string>
+                    <string>Enter department</string>
                    </property>
                   </widget>
                  </item>
@@ -8405,7 +8405,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                     <string notr="true">padding: 6px 12px;</string>
                    </property>
                    <property name="placeholderText">
-                    <string>Pick Type</string>
+                    <string>Pick Category</string>
                    </property>
                    <item>
                     <property name="text">
@@ -8580,7 +8580,7 @@ color: rgba(0, 0, 0, 0.50);</string>
                     <string>3201</string>
                    </property>
                    <property name="placeholderText">
-                    <string>Enter your department</string>
+                    <string>Enter hall</string>
                    </property>
                   </widget>
                  </item>
@@ -8766,21 +8766,27 @@ color: rgba(0, 0, 0, 0.50);</string>
             <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
-              <height>10</height>
+              <height>13</height>
              </size>
             </property>
            </spacer>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_109">
+           <layout class="QHBoxLayout" name="horizontalLayout_44">
             <item>
-             <layout class="QVBoxLayout" name="verticalLayout_156">
+             <layout class="QVBoxLayout" name="verticalLayout_54">
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_107">
+               <layout class="QHBoxLayout" name="horizontalLayout_40">
                 <item>
                  <layout class="QVBoxLayout" name="verticalLayout_155">
                   <item>
                    <widget class="QLabel" name="label_196">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">/* Body 2 */
 border: 0;
@@ -8813,7 +8819,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="cmb_grd_yr_11">
+                   <widget class="QLineEdit" name="ln_edt_stnt_nme_8">
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
@@ -8821,31 +8827,32 @@ color: rgba(0, 0, 0, 0.87);</string>
                      </size>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">padding: 6px 12px;</string>
+                     <string notr="true">color: #000;
+padding: 6px 12px;
+border: 1px solid rgba(0, 0, 0, 0.20);
+border-radius: 5px;
+
+/* Body 2 */
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.50);</string>
+                    </property>
+                    <property name="text">
+                     <string/>
                     </property>
                     <property name="placeholderText">
-                     <string>Pick Student</string>
+                     <string>Enter student ID</string>
                     </property>
-                    <item>
-                     <property name="text">
-                      <string>2023</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>2024</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>2025</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>2026</string>
-                     </property>
-                    </item>
                    </widget>
                   </item>
                  </layout>
@@ -8965,7 +8972,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QComboBox" name="cmb_grd_yr_12">
+                   <widget class="QLineEdit" name="ln_edt_stnt_nme_9">
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
@@ -8973,31 +8980,32 @@ color: rgba(0, 0, 0, 0.87);</string>
                      </size>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">padding: 6px 12px;</string>
+                     <string notr="true">color: #000;
+padding: 6px 12px;
+border: 1px solid rgba(0, 0, 0, 0.20);
+border-radius: 5px;
+
+/* Body 2 */
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.50);</string>
+                    </property>
+                    <property name="text">
+                     <string/>
                     </property>
                     <property name="placeholderText">
-                     <string>Pick Professor</string>
+                     <string>Enter professor ID</string>
                     </property>
-                    <item>
-                     <property name="text">
-                      <string>2023</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>2024</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>2025</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>2026</string>
-                     </property>
-                    </item>
                    </widget>
                   </item>
                  </layout>
@@ -9085,7 +9093,7 @@ border: 1px solid rgb(227, 227, 227);</string>
             <property name="sizeHint" stdset="0">
              <size>
               <width>17</width>
-              <height>10</height>
+              <height>13</height>
              </size>
             </property>
            </spacer>
