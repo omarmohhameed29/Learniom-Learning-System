@@ -17,7 +17,7 @@ private:
     std::string graduated_from;
     std::string joined_on;
     std::string birth;
-    std::vector<Course*> courses;
+    std::vector<std::string> courses;
 public:
 
    Professor(
@@ -41,6 +41,8 @@ public:
    std::string get_graduated_from();
    std::string get_joined_on();
    std::string get_birth();
+   std::vector<std::string> get_courses();
+   void set_courses(std::string course);
 
 };
 

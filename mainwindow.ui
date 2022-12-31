@@ -334,7 +334,7 @@ QTimeEdit::down-arrow
 }</string>
       </property>
       <property name="currentIndex">
-       <number>10</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="P0_Login">
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -8977,7 +8977,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="ln_edt_stnt_nme_9">
+                   <widget class="QLineEdit" name="ln_edt_prfssr_nme_9">
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
@@ -9045,7 +9045,7 @@ min-width: 90px;</string>
                </layout>
               </item>
               <item>
-               <widget class="QTableWidget" name="tbl_students_5">
+               <widget class="QTableWidget" name="tbl_professors_5">
                 <property name="enabled">
                  <bool>true</bool>
                 </property>

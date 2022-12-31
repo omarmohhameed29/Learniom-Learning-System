@@ -39,6 +39,7 @@ int course_id = 0;
 QTime course_time;
 bool edit_course = false;
 int count_student = 0;
+int count_professor = 0;
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //export to csv
 //To be called on clicking the export button in student
@@ -1533,7 +1534,6 @@ std::vector<int> existance;
 Student* store_current_student = nullptr;
 void MainWindow::on_pushButton_18_clicked()
 {
-
     int found = 0;
     int id = ui->ln_edt_stnt_nme_8->text().toInt();
     qDebug()<<"ID Pulled";
@@ -1619,6 +1619,57 @@ void MainWindow::on_tbl_courses_cellClicked(int row, int column)
     ui->ln_edt_stnt_dprtmnt_5->setText(course_data["hall"]);
     ui->timeEdit->setTime(database->courses[course_index]->get_start_time());
 
+
+}
+//global variable keeps track of existing professor in the course
+std::vector<int> existance_prof;
+Professor* store_current_professor = nullptr;
+void MainWindow::on_pushButton_25_clicked()
+{
+    int found = 0;
+    int id = ui->ln_edt_prfssr_nme_9->text().toInt();
+    qDebug()<<"ID Pulled";
+
+    for(auto professor : database->professors)
+    {
+        if(id == professor->get_id() && unique_id(existance_prof, id))
+        {
+            count_professor++;
+            store_current_professor = professor;
+            qDebug()<<unique_id(existance_prof, id);
+            qDebug()<<"reached";
+            existance_prof.push_back(id);
+            ui->tbl_professors_5->setRowCount(ui->tbl_professors_5->rowCount() + 1);
+
+            QTableWidgetItem* id_item = new QTableWidgetItem(QString::fromStdString(std::to_string(professor->get_id())));
+            id_item->setFlags(id_item->flags() &  ~Qt::ItemIsEditable);
+            ui->tbl_professors_5->setItem(ui->tbl_professors_5->rowCount()-1, 0, id_item);
+
+            QTableWidgetItem* name_item = new QTableWidgetItem(QString::fromStdString(professor->getName()));
+            name_item->setFlags(name_item->flags() &  ~Qt::ItemIsEditable);
+            ui->tbl_professors_5->setItem(ui->tbl_professors_5->rowCount()-1, 1, name_item);
+
+
+            qDebug()<<"ended";
+            found  = 1;
+            professor->set_courses(ui->ln_edt_stnt_nme_5->text().toStdString());
+            break;
+
+        }
+
+
+    }
+    if(!unique_id(existance_prof, id))
+    {
+        qDebug()<<"Added professor";
+        //TODO display the above
+    }
+    else if(!found)
+    {
+        qDebug()<<"Not found";
+        //TODO display professor not found
+    }
+    ui->ln_edt_prfssr_nme_9->clear();
 
 }
 

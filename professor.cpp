@@ -54,4 +54,14 @@ std::string Professor :: get_birth(){
     return birth;
 }
 
+std::vector<std::string> Professor::get_courses()
+{
+    return this->courses;
+}
+
+void Professor::set_courses(std::string course)
+{
+    this->courses.push_back(course);
+}
+
 

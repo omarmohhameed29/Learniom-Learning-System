@@ -102,6 +102,8 @@ private slots:
 
     void on_tbl_courses_cellClicked(int row, int column);
 
+    void on_pushButton_25_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
