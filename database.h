@@ -18,11 +18,11 @@ public:
     // For testing
     std::vector<Student*> get_students_mock_data() {
         return {
-            new Student("Amir Hesham", "amirhesham65@gmail.com", "01013708540", "SBME", 20, 2025),
-            new Student("Karim Hesham", "testthing@gmail.com", "01013708540", "SBME", 20, 2025),
-            new Student("Mohamed Alaa", "moalaaaaaaa@gmail.com", "01013708540", "SBME", 20, 2025),
-            new Student("John Doe", "amirhesham65@gmail.com", "01013708540", "SBME", 20, 2025),
-            new Student("Jane Doe", "amirhesham65@gmail.com", "01013708540", "SBME", 20, 2025)
+            new Student("Amir Hesham", "amirhesham65@gmail.com", "01013708540", "SBE", 20, 2025),
+            new Student("Karim Hesham", "testthing@gmail.com", "01013708540", "CMP", 20, 2025),
+            new Student("Mohamed Alaa", "moalaaaaaaa@gmail.com", "01013708540", "SBE", 20, 2025),
+            new Student("John Doe", "amirhesham65@gmail.com", "01013708540", "SBE", 20, 2025),
+            new Student("Jane Doe", "amirhesham65@gmail.com", "01013708540", "CMP", 20, 2025)
         };
     };
 
