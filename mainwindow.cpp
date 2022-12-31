@@ -1412,3 +1412,80 @@ void MainWindow::on_pushButton_19_clicked()
         }
 }
 
+
+
+
+void MainWindow::on_pushButton_9_clicked()
+{
+    //get the Professor name to search for from the search bar
+        std::string prof_name = ui->lineEdit_4->text().toStdString();
+        qDebug()<<QString::fromStdString(prof_name);
+        bool found = 0;
+        //Loop all over the Professors database to search for the given name
+        for(auto i = 0; i < database->professors.size(); i++)
+        {
+            if(prof_name == database->professors[i]->getName())
+            {
+                //if Professor is found
+                qDebug()<<QString::fromStdString(database->professors[i]->getName());
+                int row_index = i;
+                qDebug()<<"before reached";
+                qDebug()<<"reached";
+                found = 1;
+                //searching for the matching item in the Qwidget table
+                auto matching_item = ui->tbl_professors->findItems(QString::fromStdString(prof_name), Qt::MatchContains);
+                for(auto item : matching_item)
+                {
+                    //select the item found
+                    item->setSelected(true);
+                    //make the item clicked to display the info in the card to the left
+                    ui->tbl_professors->cellClicked(row_index, 0);
+                }
+
+                break;
+            }
+        }
+        //  Professors not found in the database
+        if(!found)
+        {
+           //TODO Display Not Professors not found
+            qDebug()<<"Professor not found";
+        }
+}
+
+
+
+
+void MainWindow::on_comboBox_4_currentIndexChanged(int index)
+{
+    QString filter_department = ui->comboBox_4->currentText();
+    qDebug()<<filter_department;
+    std::vector<Professor*> filtered_professors;
+    for(auto professor : database->professors)
+    {
+        if(QString::fromStdString(professor->getDepartment()) == filter_department)
+            filtered_professors.push_back(professor);
+    }
+
+    // Setting up professor table
+    QHeaderView* professors_table_header = ui->tbl_professors->horizontalHeader();
+    professors_table_header->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
+
+    int tbl_professors_rows_count = filtered_professors.size();
+    ui->tbl_professors->setRowCount(tbl_professors_rows_count);
+    ui->tbl_professors->verticalHeader()->setVisible(false);
+    ui->tbl_professors->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    for (auto row = 0; row < tbl_professors_rows_count; row++) {
+        auto professor_data = get_professor_data_as_qstrings(filtered_professors.at(row));
+
+        ui->tbl_professors->setItem(row, 0, new QTableWidgetItem(professor_data["id"]));
+        ui->tbl_professors->setItem(row, 1, new QTableWidgetItem(professor_data["name"]));
+        ui->tbl_professors->setItem(row, 2, new QTableWidgetItem(professor_data["email"]));
+        ui->tbl_professors->setItem(row, 3, new QTableWidgetItem(professor_data["department"]));
+    }
+
+    qDebug()<<"reached";
+    qDebug()<<QString::fromStdString(std::to_string(filtered_professors.size()));
+}
+

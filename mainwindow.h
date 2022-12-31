@@ -89,6 +89,10 @@ private slots:
 
     void on_pushButton_19_clicked();
 
+    void on_pushButton_9_clicked();
+
+    void on_comboBox_4_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
 };
