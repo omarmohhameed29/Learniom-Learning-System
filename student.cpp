@@ -24,4 +24,23 @@ int Student::get_id()
     return this->ID;
 }
 
+std::vector<Course*> Student::get_courses()
+{
+    return this->courses;
+}
+
+void Student::set_courses(std::vector<Course*> course)
+{
+    this->courses = course;
+}
+
+std::map<Course*, float> Student::get_courses_grades()
+{
+    return this->courses_grades;
+}
+
+void Student::set_courses_grades(std::map<Course*, float> courses_grades)
+{
+    this->courses_grades = courses_grades;
+}
 
