@@ -7,22 +7,20 @@ static int course_code = 0;
 // type to be edited
 Course::Course(int ID,
         std::string name,
-       std::string department,
-       std::string category,
-       std::string hall,
-       std::string day,
-       std::string type,
-       QDateTime start_time,
-       QDateTime end_time,
-       int academic_year)
+        std::string department,
+        std::string type,
+        std::string hall,
+        std::string day,
+        QTime start_time,
+        QTime end_time,
+        int academic_year)
 {
     this->name = name;
     this->code = 001;
     this->department = department,
-    this->category = category;
+    this->type = type;
     this->hall = hall;
     this->day = day;
-    this->type = type;
     this->start_time = start_time;
     this->end_time = end_time;
     this->academic_year = academic_year;
@@ -45,17 +43,14 @@ std::string Course::get_department() const {
     return department;
 }
 
-std::string Course::get_category() const {
-    return category;
+std::string Course::get_type() const {
+    return type;
 }
 
 std::string Course::get_hall() const {
     return hall;
 }
 
-std::string Course::get_type() const {
-    return type;
-}
 
 int Course::get_academic_year() const {
     return academic_year;
@@ -68,6 +63,14 @@ int Course::get_ID() const {
 int Course::get_num_std() const {
     return 500;
 
+}
+
+std::string Course::get_day() const {
+    return day;
+}
+
+QTime Course::get_start_time() const {
+    return start_time;
 }
 
 void Course::add_student(Student* student) {

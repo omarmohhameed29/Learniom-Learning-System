@@ -35,7 +35,10 @@ void clear_navigation() {
 
 Database* database;
 Admin* login_admin;
- int courses_id = 0;
+int course_id = 0;
+QTime course_time;
+bool edit_course = false;
+int count_student = 0;
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //export to csv
 //To be called on clicking the export button in student
@@ -158,7 +161,11 @@ std::map<std::string, QString> get_course_data_as_qstrings (Course* course) {
     result["name"] = QString::fromStdString(course->get_name());
     result["department"] = QString::fromStdString(course->get_department());
     result["year"] = QString::fromStdString(std::to_string(course->get_academic_year()));
-    result["num_students"]= QString::fromStdString(std::to_string(course->get_ID()));
+    //result["num_students"] = QString::fromStdString(std::to_string(course->get));
+    result["day"] = QString::fromStdString(course->get_day());
+    result["type"] = QString::fromStdString(course->get_type());
+    result["hall"] = QString::fromStdString(course->get_hall());
+
 
     return result;
 }
@@ -173,6 +180,7 @@ std::map<std::string, QString> get_course_data_as_qstrings (Course* course) {
 int row_index_student = NULL;
 int row_index_admin = NULL;
 int row_index_professor = NULL;
+int row_index_course = NULL;
 
 
 
@@ -191,6 +199,9 @@ void store_row_index_admin(int row){
     row_index_admin = row;
 }
 
+void store_row_index_course(int row){
+    row_index_course = row;
+}
 
 
 
@@ -1172,33 +1183,31 @@ void MainWindow::on_pushButton_15_clicked()
 
     QString course_name = ui->ln_edt_stnt_nme_5->text();
     QString course_department = ui->ln_edt_stnt_nme_7->text();
-    QString course_type = ui->cmb_grd_yr_5->currentText();
-    QString course_category = ui->cmb_grd_yr_7->currentText();
+    QString course_week_day = ui->cmb_grd_yr_5->currentText();
+    QString course_type = ui->cmb_grd_yr_7->currentText();
     QString course_hall = ui->ln_edt_stnt_dprtmnt_5->text();
-    QString course_week_day = ui->cmb_grd_yr_6->currentText();
-    QDateTime course_time = QDateTime::currentDateTime();
-    // time will be edited
+    int year = ui->cmb_grd_yr_6->currentText().toInt();
 
-
-    bool name_is_valid, type_is_valid, category_is_valid, hall_is_valid;
+    bool name_is_valid, department_is_valid, type_is_valid, hall_is_valid;
 
     name_is_valid = valid.name_validate(course_name);
+    department_is_valid = valid.department_validate(course_department);
     type_is_valid = valid.type_validate(course_type);
-    category_is_valid = valid.category_validate(course_category);
      hall_is_valid = valid.hall_validate(course_hall);
 
 
-    if (name_is_valid && type_is_valid && category_is_valid  && hall_is_valid) {
-        Course *course = new Course(++courses_id,
+    if (name_is_valid && department_is_valid && type_is_valid  && hall_is_valid) {
+        if(!edit_course) {
+        Course *course = new Course(++course_id,
                                 course_name.toStdString(),
                                  course_department.toStdString(),
-                                 course_category.toStdString(),
+                                 course_type.toStdString(),
                                  course_hall.toStdString(),
                                  course_week_day.toStdString(),
-                                 course_type.toStdString(),
-                                 QDateTime::currentDateTime(),
-                                 QDateTime::currentDateTime(),
-                                    2023);
+                                 course_time,
+                                 course_time.addSecs(5400),
+                                    year);
+
                                  database->courses.push_back(course);
 
         auto course_data = get_course_data_as_qstrings(course);
@@ -1207,17 +1216,36 @@ void MainWindow::on_pushButton_15_clicked()
         ui->tbl_courses->setItem(ui->tbl_courses->rowCount()-1, 1, new QTableWidgetItem(course_data["name"]));
         ui->tbl_courses->setItem(ui->tbl_courses->rowCount()-1, 2, new QTableWidgetItem(course_data["department"]));
         ui->tbl_courses->setItem(ui->tbl_courses->rowCount()-1, 3, new QTableWidgetItem(course_data["year"]));
-        ui->tbl_courses->setItem(ui->tbl_courses->rowCount()-1, 4, new QTableWidgetItem(course_data["num_students"]));
+        ui->tbl_courses->setItem(ui->tbl_courses->rowCount()-1, 4, new QTableWidgetItem(QString::fromStdString(std::to_string(count_student))));
 
  }
 
  else {
-     // TODO: Remove later
-     // TODO: Handle feedback to user
-     qDebug()<< "Error";
-  }
 
- }
+            Course *course = new Course(database->courses[row_index_course]->get_ID(),
+                                    course_name.toStdString(),
+                                     course_department.toStdString(),
+                                     course_type.toStdString(),
+                                     course_hall.toStdString(),
+                                     course_week_day.toStdString(),
+                                     course_time,
+                                     course_time.addSecs(5400),
+                                        year);
+
+            database->courses[row_index_course] = course;
+            ui->tbl_courses->setItem(row_index_course, 0, new QTableWidgetItem(QString::fromStdString(std::to_string(database->courses[row_index_course]->get_ID()))));
+            ui->tbl_courses->setItem(row_index_course, 1, new QTableWidgetItem(course_name));
+            ui->tbl_courses->setItem(row_index_course, 2, new QTableWidgetItem(course_department));
+            ui->tbl_courses->setItem(row_index_course, 3, new QTableWidgetItem(ui->cmb_grd_yr_6->currentText()));
+            ui->tbl_courses->setItem(row_index_course, 4, new QTableWidgetItem(QString::fromStdString(std::to_string(count_student))));
+            edit_course = false;
+
+
+      }
+
+    }
+}
+
 
 
 
@@ -1290,7 +1318,7 @@ void MainWindow::on_comboBox_7_currentIndexChanged(int index)
         ui->tbl_courses->setItem(row, 1, new QTableWidgetItem(course_data["name"]));
         ui->tbl_courses->setItem(row, 2, new QTableWidgetItem(course_data["department"]));
         ui->tbl_courses->setItem(row, 3, new QTableWidgetItem(course_data["year"]));
-        ui->tbl_courses->setItem(row, 4, new QTableWidgetItem(course_data["no_students"]));
+        ui->tbl_courses->setItem(row, 4, new QTableWidgetItem(QString::fromStdString(std::to_string(count_student))));
     }
 
     qDebug()<<"reached";
@@ -1325,7 +1353,7 @@ void MainWindow::on_comboBox_8_currentIndexChanged(int index)
         ui->tbl_courses->setItem(row, 1, new QTableWidgetItem(course_data["name"]));
         ui->tbl_courses->setItem(row, 2, new QTableWidgetItem(course_data["department"]));
         ui->tbl_courses->setItem(row, 3, new QTableWidgetItem(course_data["year"]));
-        ui->tbl_courses->setItem(row, 4, new QTableWidgetItem(course_data["num_students"]));
+        ui->tbl_courses->setItem(row, 4, new QTableWidgetItem(QString::fromStdString(std::to_string(count_student))));
     }
 
     qDebug()<<"reached";
@@ -1362,7 +1390,7 @@ void MainWindow::on_comboBox_10_currentIndexChanged(int index)
                ui->tbl_courses->setItem(row, 1, new QTableWidgetItem(course_data["name"]));
                ui->tbl_courses->setItem(row, 2, new QTableWidgetItem(course_data["department"]));
                ui->tbl_courses->setItem(row, 3, new QTableWidgetItem(course_data["year"]));
-               ui->tbl_courses->setItem(row, 4, new QTableWidgetItem(course_data["num_students"]));
+               ui->tbl_courses->setItem(row, 4, new QTableWidgetItem(QString::fromStdString(std::to_string(count_student))));
            }
 
            qDebug()<<"reached";
@@ -1514,6 +1542,7 @@ void MainWindow::on_pushButton_18_clicked()
     {
         if(id == student->get_id() && unique_id(existance, id))
         {
+            count_student++;
             store_current_student = student;
             qDebug()<<unique_id(existance, id);
             qDebug()<<"reached";
@@ -1562,6 +1591,34 @@ void MainWindow::on_tbl_students_4_itemChanged(QTableWidgetItem *item)
     float grade = item->text().toFloat();
     qDebug()<<grade;
     store_current_student->set_courses_grades(ui->ln_edt_stnt_nme_5->text().toStdString(),grade);
+
+}
+
+
+void MainWindow::on_timeEdit_timeChanged(const QTime &time)
+{
+    course_time = time;
+}
+
+
+
+void MainWindow::on_tbl_courses_cellClicked(int row, int column)
+{
+    edit_course = true;
+    ui->ViewStack->setCurrentIndex(push_navigation(10));
+    qDebug()<< row;
+    int course_index = row;
+    store_row_index_course(course_index);
+    auto course_data = get_course_data_as_qstrings(database->courses[course_index]);
+    ui->stnt_code_lbl_3->setText("course - " + course_data["id"]);
+    ui->ln_edt_stnt_nme_5->setText(course_data["name"]);
+    ui->ln_edt_stnt_nme_7->setText(course_data["department"]);
+    ui->cmb_grd_yr_6->setCurrentText(course_data["year"]);
+    ui->cmb_grd_yr_7->setCurrentText(course_data["type"]);
+    ui->cmb_grd_yr_5->setCurrentText(course_data["day"]);
+    ui->ln_edt_stnt_dprtmnt_5->setText(course_data["hall"]);
+    ui->timeEdit->setTime(database->courses[course_index]->get_start_time());
+
 
 }
 

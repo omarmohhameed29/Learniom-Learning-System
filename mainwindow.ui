@@ -8264,7 +8264,7 @@ letter-spacing: 0.25px;
 color: rgba(0, 0, 0, 0.50);</string>
                    </property>
                    <property name="text">
-                    <string>SBME</string>
+                    <string>SBE</string>
                    </property>
                    <property name="placeholderText">
                     <string>Enter department</string>
@@ -8277,6 +8277,100 @@ color: rgba(0, 0, 0, 0.50);</string>
                 <layout class="QVBoxLayout" name="verticalLayout_147">
                  <item>
                   <widget class="QLabel" name="label_186">
+                   <property name="styleSheet">
+                    <string notr="true">/* Body 2 */
+border: 0;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 300;
+font-size: 10px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+letter-spacing: 0.25px;
+text-align: center;
+
+/* 00. On Surface / High Emphasis */
+
+color: rgba(0, 0, 0, 0.87);</string>
+                   </property>
+                   <property name="text">
+                    <string>Week Day</string>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>false</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="cmb_grd_yr_5">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">padding: 6px 12px;</string>
+                   </property>
+                   <property name="placeholderText">
+                    <string>Pick Day</string>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>Monday</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Tuesday</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Wednesday</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Thursday</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Friday</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Saturday</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Sunday</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="0" column="3">
+                <layout class="QVBoxLayout" name="verticalLayout_150">
+                 <item>
+                  <widget class="QLabel" name="label_191">
                    <property name="styleSheet">
                     <string notr="true">/* Body 2 */
 border: 0;
@@ -8309,7 +8403,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QComboBox" name="cmb_grd_yr_5">
+                  <widget class="QComboBox" name="cmb_grd_yr_7">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -8330,101 +8424,12 @@ color: rgba(0, 0, 0, 0.87);</string>
                    </property>
                    <item>
                     <property name="text">
-                     <string>2023</string>
+                     <string>Mandatory</string>
                     </property>
                    </item>
                    <item>
                     <property name="text">
-                     <string>2024</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>2025</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>2026</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="0" column="3">
-                <layout class="QVBoxLayout" name="verticalLayout_150">
-                 <item>
-                  <widget class="QLabel" name="label_191">
-                   <property name="styleSheet">
-                    <string notr="true">/* Body 2 */
-border: 0;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 300;
-font-size: 10px;
-line-height: 20px;
-/* identical to box height, or 143% */
-
-letter-spacing: 0.25px;
-text-align: center;
-
-/* 00. On Surface / High Emphasis */
-
-color: rgba(0, 0, 0, 0.87);</string>
-                   </property>
-                   <property name="text">
-                    <string>Category</string>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>false</bool>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                   </property>
-                   <property name="wordWrap">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="cmb_grd_yr_7">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>200</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">padding: 6px 12px;</string>
-                   </property>
-                   <property name="placeholderText">
-                    <string>Pick Category</string>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>2023</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>2024</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>2025</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>2026</string>
+                     <string>Elective</string>
                     </property>
                    </item>
                   </widget>
@@ -8608,7 +8613,7 @@ text-align: center;
 color: rgba(0, 0, 0, 0.87);</string>
                    </property>
                    <property name="text">
-                    <string>Week Day</string>
+                    <string>Academic Year</string>
                    </property>
                    <property name="scaledContents">
                     <bool>false</bool>
@@ -8639,7 +8644,7 @@ color: rgba(0, 0, 0, 0.87);</string>
                     <string notr="true">padding: 6px 12px;</string>
                    </property>
                    <property name="placeholderText">
-                    <string>Pick Day</string>
+                    <string>Pick Year</string>
                    </property>
                    <item>
                     <property name="text">

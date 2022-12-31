@@ -85,14 +85,13 @@ public:
         return(!is_empty(type));
     }
 
-    bool category_validate(QString category){
-        return(!is_empty(category));
-    }
-
     bool hall_validate(QString hall){
         return(!is_empty(hall));
     }
 
+    bool course_name_validate(QString name){
+        return(is_empty(name));
+    }
 
 
 };

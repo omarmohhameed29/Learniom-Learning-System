@@ -7,6 +7,7 @@
 #include <QDateTime>
 #include "student.h"
 #include "professor.h"
+#include <QMetaEnum>
 
 /// \brief The WeekDay enum
 /// Representing the week days as discrete enumeration
@@ -17,18 +18,16 @@ enum WeekDay { MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY };
 /// 1. MANDATORY - A course which the student must take
 /// 2. Elective - A course which  the student may take
 enum CourseType { MANDATORY, ELECTIVE };
-
 class Course {
 private:
     std::string name;
     std::string code;
     std::string department;
-    std::string category;
+    std::string type;
     std::string hall;
     std::string day;
-    std::string type;
-    QDateTime start_time;
-    QDateTime end_time;
+    QTime start_time;
+    QTime end_time;
     int academic_year;
     int ID;
     std::vector<Student*> students;
@@ -39,12 +38,11 @@ public:
     Course(int ID,
            std::string name,
            std::string department,
-           std::string category,
+           std::string type,
            std::string hall,
            std::string day,
-           std::string type,
-           QDateTime start_time,
-           QDateTime end_time,
+           QTime start_time,
+           QTime end_time,
            int academic_year);
 
 
@@ -52,9 +50,10 @@ public:
     std::string get_name() const;
     std::string get_code() const;
     std::string get_department() const;
-    std::string get_category() const;
-    std::string get_hall() const;
     std::string get_type() const;
+    std::string get_hall() const;
+    std::string get_day() const;
+    QTime get_start_time() const;
     int get_academic_year() const;
     int get_ID() const;
     int get_num_std() const;

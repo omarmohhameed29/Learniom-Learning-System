@@ -97,6 +97,11 @@ private slots:
 
     void on_tbl_students_4_itemChanged(QTableWidgetItem *item);
 
+
+    void on_timeEdit_timeChanged(const QTime &time);
+
+    void on_tbl_courses_cellClicked(int row, int column);
+
 private:
     Ui::MainWindow *ui;
 };
